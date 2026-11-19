@@ -3,7 +3,12 @@
 // Prepare writable paths in Vercel serverless /tmp
 $dirs = [
     '/tmp/views',
+    '/tmp/storage',
+    '/tmp/storage/app',
+    '/tmp/storage/app/public',
+    '/tmp/storage/framework',
     '/tmp/storage/framework/views',
+    '/tmp/storage/framework/cache',
     '/tmp/storage/framework/cache/data',
     '/tmp/storage/framework/sessions',
     '/tmp/storage/logs',

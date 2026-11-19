@@ -6,6 +6,9 @@
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.8.0"
+        },
+        "api/*.php": {
+            "runtime": "vercel-php@0.8.0"
         }
     },
     "routes": [
@@ -31,9 +34,11 @@
         }
     ],
     "env": {
+        "VERCEL": "1",
         "APP_ENV": "production",
         "APP_DEBUG": "false",
         "APP_KEY": "base64:XdD5kfudTlmVl2I3pqxZtIKyLYw8bzyLaNvR+N636RI=",
+        "APP_STORAGE": "/tmp/storage",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
