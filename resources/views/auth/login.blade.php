@@ -3,20 +3,18 @@
 @section('title', 'SOUQLY — ' . __('auth.sign_in'))
 
 @section('content')
-<div class="py-12 sm:py-16 bg-slate-50">
+<div class="py-16 sm:py-20 bg-[#FAF8F5] min-h-[75vh]">
     <div class="max-w-md mx-auto px-4 sm:px-6">
         
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <div class="w-12 h-12 rounded-2xl bg-souqly-navy text-white text-2xl font-black flex items-center justify-center mx-auto shadow-md">
-                S
-            </div>
-            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 mt-4">
+        <!-- Header Minimalist -->
+        <div class="text-center mb-10">
+            <span class="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-medium block mb-2">ESPACE PRIVÉ MEMBRE</span>
+            <h1 class="font-serif text-3xl sm:text-4xl text-stone-900 font-normal">
                 {{ __('auth.sign_in') }}
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            <p class="text-xs text-stone-500 mt-2 font-light">
                 {{ __('auth.no_account_yet') }} 
-                <a href="{{ route('register') }}" class="font-bold text-souqly-orange hover:underline">
+                <a href="{{ route('register') }}" class="font-semibold text-stone-900 hover:text-[#C5A059] transition-colors underline underline-offset-2">
                     {{ __('auth.create_account') }}
                 </a>
             </p>
@@ -24,19 +22,19 @@
 
         <!-- Alert messages -->
         @if(session('success'))
-            <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+            <div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium">
                 {{ session('success') }}
             </div>
         @endif
 
         @if(session('error'))
-            <div class="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold">
+            <div class="mb-6 p-4 bg-rose-50 border border-rose-200 text-rose-900 text-xs font-medium">
                 {{ session('error') }}
             </div>
         @endif
 
         @if($errors->any())
-            <div class="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs space-y-1">
+            <div class="mb-6 p-4 bg-rose-50 border border-rose-200 text-rose-900 text-xs space-y-1">
                 @foreach($errors->all() as $error)
                     <div>• {{ $error }}</div>
                 @endforeach
@@ -44,13 +42,13 @@
         @endif
 
         <!-- Login Card -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
-            <form action="{{ route('login') }}" method="POST" class="space-y-5">
+        <div class="bg-white border border-stone-200/80 p-8 sm:p-10 shadow-xs space-y-6">
+            <form action="{{ route('login') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <!-- Email -->
                 <div>
-                    <label for="email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <label for="email" class="block text-[10px] font-semibold text-stone-700 uppercase tracking-[0.2em] mb-1.5">
                         {{ __('auth.email_address') }}
                     </label>
                     <input 
@@ -61,14 +59,14 @@
                         required 
                         autofocus
                         placeholder="client@souqly.ma"
-                        class="w-full text-sm px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-souqly-orange focus:border-transparent transition"
+                        class="w-full text-xs px-3.5 py-3 bg-[#FAF8F5] border border-stone-300 focus:outline-none focus:border-stone-900 tracking-wider transition"
                     >
                 </div>
 
                 <!-- Password -->
                 <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <label for="password" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label for="password" class="block text-[10px] font-semibold text-stone-700 uppercase tracking-[0.2em]">
                             {{ __('auth.password_label') }}
                         </label>
                     </div>
@@ -78,26 +76,26 @@
                         id="password" 
                         required 
                         placeholder="••••••••"
-                        class="w-full text-sm px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-souqly-orange focus:border-transparent transition"
+                        class="w-full text-xs px-3.5 py-3 bg-[#FAF8F5] border border-stone-300 focus:outline-none focus:border-stone-900 tracking-wider transition"
                     >
                 </div>
 
                 <!-- Remember Me -->
-                <div class="flex items-center justify-between text-xs">
-                    <label class="flex items-center gap-2 cursor-pointer text-slate-600">
-                        <input type="checkbox" name="remember" class="w-4 h-4 rounded text-souqly-orange focus:ring-souqly-orange border-slate-300">
-                        <span>{{ __('auth.remember_me') }}</span>
+                <div class="flex items-center justify-between text-xs tracking-wider">
+                    <label class="flex items-center gap-2 cursor-pointer text-stone-600">
+                        <input type="checkbox" name="remember" class="w-3.5 h-3.5 text-stone-900 focus:ring-0 border-stone-300">
+                        <span class="text-[11px]">{{ __('auth.remember_me') }}</span>
                     </label>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn-primary w-full py-3.5 text-sm font-bold shadow-md">
+                <button type="submit" class="btn-primary w-full py-4 text-[11px] uppercase tracking-[0.2em] font-semibold text-center block transition">
                     {{ __('auth.log_in') }}
                 </button>
             </form>
 
             <!-- Recruiter / Demo One-Click Fill -->
-            <div class="mt-8 pt-6 border-t border-slate-100">
+            <div class="mt-8 pt-6 border-t border-stone-200/80">
                 <span class="block text-center text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3">
                     {{ __('auth.demo_accounts') }}
                 </span>

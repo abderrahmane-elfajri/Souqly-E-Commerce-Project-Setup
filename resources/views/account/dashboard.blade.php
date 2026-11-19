@@ -3,40 +3,37 @@
 @section('title', 'SOUQLY — ' . __('account.my_account'))
 
 @section('content')
-<div class="py-10 bg-slate-50 min-h-[70vh]">
+<div class="py-12 bg-[#FAF8F5] min-h-[75vh]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Account Header -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div class="flex items-center gap-4">
-                <div class="w-16 h-16 rounded-2xl bg-souqly-navy text-white text-2xl font-black flex items-center justify-center shrink-0 shadow-md">
+        <!-- Account Header (Architectural Luxury Presentation) -->
+        <div class="bg-white border border-stone-200/80 p-8 sm:p-10 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
+            <div class="flex items-center gap-5">
+                <div class="w-16 h-16 bg-[#0B1320] text-[#C5A059] font-serif text-2xl flex items-center justify-center shrink-0 border border-stone-800">
                     {{ substr($user->name, 0, 1) }}
                 </div>
                 <div>
                     <div class="flex items-center gap-3">
-                        <h1 class="text-2xl font-black text-slate-900">{{ $user->name }}</h1>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-souqly-orange">
-                            Client SOUQLY
+                        <h1 class="font-serif text-2xl sm:text-3xl font-normal text-stone-900">{{ $user->name }}</h1>
+                        <span class="inline-flex items-center px-2.5 py-0.5 text-[9.5px] uppercase tracking-widest font-semibold border border-[#C5A059]/40 bg-[#FAF8F5] text-[#C5A059]">
+                            MEMBRE SOUQLY
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 mt-1">
+                    <p class="text-xs text-stone-400 mt-1 font-light tracking-wide">
                         {{ $user->email }} • {{ $user->phone ?? 'Pas de numéro enregistré' }}
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
-                <a href="{{ route('account.orders.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-souqly-orange text-white text-xs font-bold rounded-xl hover:bg-souqly-orange-hover shadow-sm transition">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span>Mes Commandes ({{ $user->orders()->count() }})</span>
+            <div class="flex items-center gap-4">
+                <a href="{{ route('account.orders.index') }}" class="btn-primary text-[10px] uppercase tracking-[0.2em] px-5 py-3 font-semibold">
+                    <span>Commandes ({{ $user->orders()->count() }})</span>
                 </a>
 
                 <!-- Logout Form -->
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn-outline text-xs px-4 py-2 text-rose-600 hover:border-rose-300 hover:bg-rose-50">
+                    <button type="submit" class="btn-outline text-[10px] uppercase tracking-[0.18em] px-4 py-2.5 text-stone-400 hover:text-stone-900 hover:border-stone-900">
                         Déconnexion
                     </button>
                 </form>
@@ -44,50 +41,51 @@
         </div>
 
         @if(session('success'))
-            <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
-                {{ session('success') }}
+            <div class="mb-8 p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium flex items-center gap-3">
+                <span class="text-emerald-600 text-base">✓</span>
+                <span>{{ session('success') }}</span>
             </div>
         @endif
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
             <!-- Left Col: Default Address & Profile -->
-            <div class="lg:col-span-5 space-y-6">
+            <div class="lg:col-span-5 space-y-8">
                 <!-- Shipping Address Card -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                            <span>📍</span> {{ __('account.addresses') }}
+                <div class="bg-white border border-stone-200/80 p-7 shadow-xs">
+                    <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-stone-200/80">
+                        <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900">
+                            📍 {{ __('account.addresses') }}
                         </h3>
-                        <span class="badge-currency">{{ __('account.default_badge') }}</span>
+                        <span class="text-[9.5px] uppercase tracking-widest text-[#C5A059] font-medium">{{ __('account.default_badge') }}</span>
                     </div>
 
                     @if($defaultAddress)
-                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2 text-xs">
-                            <div class="font-bold text-slate-800 text-sm">{{ $defaultAddress->full_name }}</div>
-                            <div class="text-slate-600">{{ $defaultAddress->address }}</div>
-                            <div class="text-slate-600 font-semibold">{{ $defaultAddress->city }} {{ $defaultAddress->postal_code ? '('.$defaultAddress->postal_code.')' : '' }}</div>
-                            <div class="text-slate-600 flex items-center gap-1.5 pt-1">
-                                <span>📞</span> <span>{{ $defaultAddress->phone }}</span>
+                        <div class="p-4 bg-[#FAF8F5] border border-stone-200/70 space-y-2 text-xs tracking-wider">
+                            <div class="font-serif text-base text-stone-900">{{ $defaultAddress->full_name }}</div>
+                            <div class="text-stone-600 font-light">{{ $defaultAddress->address }}</div>
+                            <div class="text-stone-800 font-medium">{{ $defaultAddress->city }} {{ $defaultAddress->postal_code ? '('.$defaultAddress->postal_code.')' : '' }}</div>
+                            <div class="text-stone-500 font-mono text-[11px] pt-1">
+                                📞 {{ $defaultAddress->phone }}
                             </div>
                         </div>
                     @else
-                        <p class="text-xs text-slate-500">Aucune adresse par défaut renseignée.</p>
+                        <p class="text-xs text-stone-400 font-light">Aucune adresse par défaut enregistrée.</p>
                     @endif
                 </div>
 
                 <!-- Update Profile Form -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-                    <h3 class="font-bold text-slate-900 text-sm mb-4 flex items-center gap-2">
-                        <span>👤</span> {{ __('account.profile') }}
+                <div class="bg-white border border-stone-200/80 p-7 shadow-xs">
+                    <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 mb-5 pb-3 border-b border-stone-200/80">
+                        👤 {{ __('account.profile') }}
                     </h3>
 
-                    <form action="{{ route('account.profile.update') }}" method="POST" class="space-y-4">
+                    <form action="{{ route('account.profile.update') }}" method="POST" class="space-y-5">
                         @csrf
                         @method('PUT')
 
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            <label class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-700 mb-1.5">
                                 {{ __('auth.full_name') }}
                             </label>
                             <input 
@@ -95,12 +93,12 @@
                                 name="name" 
                                 value="{{ old('name', $user->name) }}" 
                                 required
-                                class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-souqly-orange"
+                                class="w-full text-xs px-3.5 py-3 bg-[#FAF8F5] border border-stone-300 focus:outline-none focus:border-stone-900 tracking-wider"
                             >
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            <label class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-700 mb-1.5">
                                 {{ __('auth.phone_number') }}
                             </label>
                             <input 
@@ -108,11 +106,11 @@
                                 name="phone" 
                                 value="{{ old('phone', $user->phone) }}" 
                                 required
-                                class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-souqly-orange"
+                                class="w-full text-xs px-3.5 py-3 bg-[#FAF8F5] border border-stone-300 focus:outline-none focus:border-stone-900 tracking-wider font-mono"
                             >
                         </div>
 
-                        <button type="submit" class="btn-primary text-xs w-full py-2.5">
+                        <button type="submit" class="btn-primary w-full py-3.5 text-[10px] uppercase tracking-[0.2em] font-semibold">
                             {{ __('account.save_changes') }}
                         </button>
                     </form>
@@ -121,18 +119,18 @@
 
             <!-- Right Col: Orders History -->
             <div class="lg:col-span-7">
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm min-h-[400px] flex flex-col justify-between">
+                <div class="bg-white border border-stone-200/80 p-7 shadow-xs min-h-[420px] flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
-                                <span>📦</span> {{ __('account.orders') }}
+                        <div class="flex items-baseline justify-between mb-6 pb-3 border-b border-stone-200/80">
+                            <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900">
+                                📦 {{ __('account.orders') }}
                             </h3>
                             @if($recentOrders->isNotEmpty())
-                                <a href="{{ route('account.orders.index') }}" class="text-xs font-bold text-souqly-orange hover:underline">
+                                <a href="{{ route('account.orders.index') }}" class="text-[10.5px] uppercase tracking-wider font-semibold text-stone-900 hover:text-[#C5A059] transition-colors">
                                     Voir tout ({{ $user->orders()->count() }}) &rarr;
                                 </a>
                             @else
-                                <a href="{{ route('shop') }}" class="text-xs font-bold text-souqly-orange hover:underline">
+                                <a href="{{ route('shop') }}" class="text-[10.5px] uppercase tracking-wider font-semibold text-stone-900 hover:text-[#C5A059] transition-colors">
                                     {{ __('account.explore_products') }} &rarr;
                                 </a>
                             @endif
@@ -141,22 +139,22 @@
                         @if($recentOrders->isNotEmpty())
                             <div class="space-y-3 mb-6">
                                 @foreach($recentOrders as $order)
-                                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+                                    <div class="p-4 bg-[#FAF8F5] border border-stone-200/70 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs tracking-wider">
                                         <div>
-                                            <div class="flex items-center gap-2">
-                                                <span class="font-mono font-bold text-slate-900">{{ $order->order_number }}</span>
-                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold {{ $order->status->badgeClasses() }}">
+                                            <div class="flex items-center gap-2.5">
+                                                <span class="font-mono font-semibold text-stone-900">{{ $order->order_number }}</span>
+                                                <span class="inline-flex items-center px-2 py-0.5 text-[9.5px] uppercase tracking-widest font-semibold border {{ $order->status->badgeClasses() }}">
                                                     {{ $order->status->label(app()->getLocale()) }}
                                                 </span>
                                             </div>
-                                            <p class="text-slate-500 text-[11px] mt-0.5">
-                                                {{ $order->created_at->format('d/m/Y H:i') }} • {{ $order->items_count }} article(s) • {{ $order->shipping_city }}
+                                            <p class="text-stone-400 text-[11px] mt-1 font-light">
+                                                {{ $order->created_at->format('d/m/Y H:i') }} • {{ $order->items_count }} pièce(s) • {{ $order->shipping_city }}
                                             </p>
                                         </div>
 
-                                        <div class="flex items-center gap-3 self-end sm:self-center">
-                                            <span class="font-bold text-slate-900 text-sm">{{ number_format($order->total, 2) }} {{ $order->currency }}</span>
-                                            <a href="{{ route('account.orders.show', $order->order_number) }}" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-800 font-bold hover:bg-slate-100 transition">
+                                        <div class="flex items-center gap-4 self-end sm:self-center">
+                                            <span class="font-medium text-stone-900 text-sm">{{ number_format($order->total, 2) }} {{ $order->currency }}</span>
+                                            <a href="{{ route('account.orders.show', $order->order_number) }}" class="text-[10.5px] uppercase tracking-wider font-semibold text-stone-900 hover:text-[#C5A059]">
                                                 Suivre &rarr;
                                             </a>
                                         </div>
@@ -165,38 +163,37 @@
                             </div>
                         @else
                             <!-- Orders Empty state -->
-                            <div class="text-center py-16 px-4">
-                                <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-3xl mb-4 text-slate-400">
+                            <div class="text-center py-16 px-4 space-y-3">
+                                <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-2xl text-stone-400">
                                     🛍️
                                 </div>
-                                <h4 class="font-bold text-slate-800 text-sm">
+                                <h4 class="font-serif text-xl text-stone-900 font-normal">
                                     {{ __('account.no_orders') }}
                                 </h4>
-                                <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-6">
-                                    Commandez vos articles préférés en paiement à la livraison (Cash on Delivery) partout au Maroc.
+                                <p class="text-xs text-stone-500 max-w-sm mx-auto font-light leading-relaxed">
+                                    Commandez vos pièces d'exception en paiement à la livraison (Cash on Delivery) partout au Maroc.
                                 </p>
-                                <a href="{{ route('shop') }}" class="btn-primary text-xs px-6 py-3">
-                                    Découvrir le catalogue SOUQLY
-                                </a>
+                                <div class="pt-2">
+                                    <a href="{{ route('shop') }}" class="btn-primary text-[10px] uppercase tracking-[0.2em] px-6 py-3 font-semibold">
+                                        Explorer la collection
+                                    </a>
+                                </div>
                             </div>
                         @endif
                     </div>
 
-                    <!-- Assistance box -->
-                    <div class="p-4 rounded-xl bg-orange-50/60 border border-orange-100 flex items-center justify-between text-xs">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">💬</span>
-                            <div>
-                                <span class="font-bold text-slate-900 block">Besoin d'aide pour une commande ?</span>
-                                <span class="text-slate-600">Notre équipe WhatsApp est à votre disposition.</span>
-                            </div>
+                    <!-- Concierge Assistance box -->
+                    <div class="p-4 bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-between text-xs tracking-wider">
+                        <div>
+                            <span class="font-serif text-sm text-stone-900 font-normal block">Besoin d'un conseil personnalisé ?</span>
+                            <span class="text-stone-500 font-light text-[11px]">Notre conciergerie WhatsApp vous assiste 7j/7.</span>
                         </div>
                         <a 
                             href="https://wa.me/212600000000?text=Bonjour%20Souqly%2C%20j%27ai%20une%20question%20concernant%20mon%20compte" 
                             target="_blank" 
-                            class="font-bold text-emerald-700 bg-emerald-100 hover:bg-emerald-200 px-3 py-1.5 rounded-lg transition"
+                            class="text-[10.5px] uppercase tracking-widest font-semibold text-emerald-800 hover:text-emerald-950 transition-colors"
                         >
-                            WhatsApp
+                            WhatsApp &rarr;
                         </a>
                     </div>
                 </div>

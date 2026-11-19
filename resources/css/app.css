@@ -8,10 +8,13 @@
 
 @theme {
     --color-souqly-navy: #101D32;
-    --color-souqly-navy-dark: #0A1220;
-    --color-souqly-navy-light: #1A2E4E;
+    --color-souqly-navy-dark: #0B1320;
+    --color-souqly-navy-light: #1E2D4A;
     --color-souqly-orange: #F28A32;
-    --color-souqly-orange-hover: #DD7520;
-    --color-souqly-orange-light: #FFF6EE;
-    --font-sans: 'Plus Jakarta Sans', 'Cairo', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --color-souqly-orange-hover: #D97724;
+    --color-souqly-orange-light: #FDF8F3;
+    --color-souqly-gold: #C5A059;
+    --color-alabaster: #FAF8F5;
+    --font-sans: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', 'Playfair Display', 'Amiri', Georgia, serif;
 }
