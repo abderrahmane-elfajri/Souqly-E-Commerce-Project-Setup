@@ -43,6 +43,13 @@ Route::get('/product/{slug}', [CatalogController::class, 'show'])->name('product
 Route::get('/track', [TrackingController::class, 'show'])->name('track');
 Route::post('/track', [TrackingController::class, 'track'])->name('track.search');
 
+// Informational & Trust Pages (Moroccan Market & Consumer Standards)
+Route::view('/faq', 'pages.faq')->name('faq');
+Route::view('/shipping-policy', 'pages.shipping')->name('shipping-policy');
+Route::view('/return-policy', 'pages.returns')->name('return-policy');
+Route::view('/terms', 'pages.terms')->name('terms');
+Route::view('/privacy', 'pages.privacy')->name('privacy');
+
 // XML Sitemap for Search Engines & Moroccan Local SEO
 Route::get('/sitemap.xml', function () {
     $products = Product::active()->latest()->get(['slug', 'updated_at']);
@@ -54,6 +61,11 @@ Route::get('/sitemap.xml', function () {
     $xml .= '<url><loc>' . url('/') . '</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
     $xml .= '<url><loc>' . url('/shop') . '</loc><changefreq>daily</changefreq><priority>0.9</priority></url>';
     $xml .= '<url><loc>' . url('/track') . '</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>';
+    $xml .= '<url><loc>' . url('/faq') . '</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>';
+    $xml .= '<url><loc>' . url('/shipping-policy') . '</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>';
+    $xml .= '<url><loc>' . url('/return-policy') . '</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>';
+    $xml .= '<url><loc>' . url('/terms') . '</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>';
+    $xml .= '<url><loc>' . url('/privacy') . '</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>';
     
     foreach ($categories as $cat) {
         $xml .= '<url><loc>' . url('/shop?category=' . $cat->slug) . '</loc><lastmod>' . $cat->updated_at->toAtomString() . '</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';

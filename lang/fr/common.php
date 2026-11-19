@@ -17,4 +17,11 @@ return [
     'delivery_morocco' => 'Livraison partout au Maroc sous 24-48h',
     'add_to_cart' => 'Ajouter au panier',
     'buy_now' => 'Acheter maintenant',
+    'faq' => 'Questions Fréquentes (FAQ)',
+    'shipping_policy' => 'Politique de Livraison',
+    'return_policy' => 'Politique de Retours & Échanges',
+    'terms' => 'Conditions Générales de Vente',
+    'privacy' => 'Politique de Confidentialité',
+    'whatsapp_concierge' => 'Conciergerie WhatsApp 7j/7',
+    'whatsapp_floating_msg' => 'Bonjour Souqly, j\'ai une question concernant un produit ou une commande.',
 ];

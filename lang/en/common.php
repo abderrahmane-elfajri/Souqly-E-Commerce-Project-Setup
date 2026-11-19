@@ -17,4 +17,11 @@ return [
     'delivery_morocco' => 'Fast delivery across Morocco (24-48h)',
     'add_to_cart' => 'Add to Cart',
     'buy_now' => 'Buy Now',
+    'faq' => 'Frequently Asked Questions (FAQ)',
+    'shipping_policy' => 'Shipping Policy',
+    'return_policy' => 'Returns & Exchange Policy',
+    'terms' => 'Terms of Service',
+    'privacy' => 'Privacy Policy',
+    'whatsapp_concierge' => 'WhatsApp Concierge 7/7',
+    'whatsapp_floating_msg' => 'Hello Souqly, I have an inquiry regarding a product or an order.',
 ];
