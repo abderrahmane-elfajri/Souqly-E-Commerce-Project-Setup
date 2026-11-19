@@ -1,12 +1,23 @@
 <?php
 
+use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes — SOUQLY
+|--------------------------------------------------------------------------
+*/
+
+// Public Storefront
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Language Switcher
 Route::get('/locale/{locale}', function (string $locale) {
     if (in_array($locale, ['fr', 'ar', 'en'])) {
         Session::put('locale', $locale);
@@ -14,11 +25,28 @@ Route::get('/locale/{locale}', function (string $locale) {
     return redirect()->back();
 })->name('locale.switch');
 
-// Language-prefixed route group example for SEO & canonical URLs
-Route::prefix('{locale}')
-    ->where(['locale' => 'fr|ar|en'])
-    ->group(function () {
-        Route::get('/', function () {
-            return view('welcome');
-        });
+// Guest Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+// Authenticated Routes
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Customer Space
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
+        Route::put('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
+        Route::put('/password', [AccountController::class, 'updatePassword'])->name('password.update');
     });
+
+    // Admin Protected Suite (Requires 'admin' or 'super_admin' role)
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    });
+});
