@@ -124,7 +124,8 @@
                 target="_blank"
                 class="inline-flex items-center gap-2.5 px-6 py-3.5 bg-emerald-800 hover:bg-emerald-900 text-white text-[11px] uppercase tracking-[0.2em] font-semibold transition"
             >
-                <span>📲 {{ __('common.whatsapp_concierge') }}</span>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.004.577 1.764.846 2.806.847h.005c3.182 0 5.768-2.587 5.768-5.768z"/></svg>
+                <span>{{ __('common.whatsapp_concierge') }}</span>
             </a>
         </div>
 

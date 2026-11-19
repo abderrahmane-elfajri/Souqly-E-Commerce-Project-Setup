@@ -47,7 +47,8 @@
         <!-- Saved Addresses (4 cols) -->
         <div class="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 self-start">
             <h3 class="font-bold text-slate-900 text-sm pb-3 border-b border-slate-100 flex items-center gap-2">
-                <span>📍</span> Carnet d'adresses au Maroc
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span>Carnet d'adresses au Maroc</span>
             </h3>
 
             @forelse($customer->addresses as $addr)
@@ -70,7 +71,10 @@
         <!-- Orders History (8 cols) -->
         <div class="lg:col-span-8 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
             <h3 class="font-bold text-slate-900 text-sm pb-3 border-b border-slate-100 flex items-center justify-between">
-                <span>📦 Historique des commandes ({{ $customer->orders->count() }})</span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    <span>Historique des commandes ({{ $customer->orders->count() }})</span>
+                </span>
                 <span class="text-xs font-mono text-slate-500">MAD (د.م.)</span>
             </h3>
 

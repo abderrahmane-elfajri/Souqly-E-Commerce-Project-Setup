@@ -82,7 +82,17 @@
                         <div class="pt-5 flex flex-wrap items-center justify-between gap-4">
                             <div class="flex items-center gap-2.5 overflow-x-auto py-1">
                                 @foreach($order->items->take(4) as $item)
-                                    <div class="flex items-center gap-2 bg-[#FAF8F5] border border-stone-200/70 px-3 py-1.5 text-xs text-stone-700">
+                                    <div class="flex items-center gap-2.5 bg-[#FAF8F5] border border-stone-200/80 px-2.5 py-1.5 text-xs text-stone-700">
+                                        <div class="w-7 h-7 bg-white border border-stone-200/80 overflow-hidden shrink-0">
+                                            <img 
+                                                src="{{ $item->product?->primary_image_url ?? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=200&q=80' }}" 
+                                                alt="{{ $item->product_name }}" 
+                                                class="w-full h-full object-cover"
+                                                loading="lazy"
+                                                width="28"
+                                                height="28"
+                                            >
+                                        </div>
                                         <span class="font-medium truncate max-w-[150px]">{{ $item->product_name }}</span>
                                         <span class="text-stone-400 font-mono">×{{ $item->quantity }}</span>
                                     </div>

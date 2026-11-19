@@ -70,8 +70,11 @@
             </div>
 
             <!-- Hero Horology Showcase Card (Real Photography Interface) -->
-            <div class="lg:col-span-5 relative">
-                <div class="relative mx-auto max-w-md bg-[#0E1726]/90 backdrop-blur-md border border-stone-700/80 p-6 sm:p-7 shadow-2xl transition duration-500 hover:border-[#C5A059]/60 group">
+            <div class="lg:col-span-5 relative group">
+                <!-- Ambient luxury glow -->
+                <div class="absolute -inset-2 bg-gradient-to-tr from-[#C5A059]/25 via-[#C5A059]/10 to-transparent blur-2xl opacity-60 group-hover:opacity-100 transition duration-700 pointer-events-none"></div>
+
+                <div class="relative mx-auto max-w-md bg-[#0E1726]/95 backdrop-blur-md border border-stone-700/80 p-6 sm:p-7 shadow-2xl transition duration-500 hover:border-[#C5A059]/70">
                     
                     <!-- Header Info Bar -->
                     <div class="flex items-center justify-between pb-3.5 border-b border-stone-800 text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">
@@ -83,18 +86,18 @@
                     </div>
 
                     <!-- Real Photography Image Showcase -->
-                    <div class="relative aspect-[4/3] sm:aspect-square bg-[#070D17] my-5 overflow-hidden border border-stone-800 group">
+                    <div class="relative aspect-[4/3] sm:aspect-square bg-[#070D17] my-5 overflow-hidden border border-stone-800 group/img">
                         <img 
                             src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85" 
                             alt="Souqly Royal Chronographe Automatique 41mm" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                            class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-700 ease-out"
                             width="600"
                             height="600"
                             loading="eager"
                         >
                         
                         <!-- Floating Glassmorphism Badge: Casablanca 24h Dispatch -->
-                        <div class="absolute bottom-3 start-3 end-3 flex items-center justify-between gap-2 p-2.5 bg-[#0B1320]/85 backdrop-blur-md border border-stone-700/70 text-[10px]">
+                        <div class="absolute bottom-3 start-3 end-3 flex items-center justify-between gap-2 p-2.5 bg-[#0B1320]/90 backdrop-blur-md border border-stone-700/80 text-[10px]">
                             <div class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                 <span class="text-stone-200 font-medium tracking-wider">En Stock à Casablanca</span>
@@ -112,7 +115,11 @@
                         <div class="flex items-center justify-between text-xs">
                             <span class="text-[10px] text-stone-400 uppercase tracking-[0.22em] font-medium">Haute Horlogerie • 41mm</span>
                             <div class="flex items-center text-[#C5A059] text-[11px] gap-1">
-                                <span>★★★★★</span>
+                                <div class="flex items-center text-[#C5A059]">
+                                    @for($i = 0; $i < 5; $i++)
+                                        <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    @endfor
+                                </div>
                                 <span class="text-stone-400 text-[10px] font-mono">(48 avis vérifiés)</span>
                             </div>
                         </div>

@@ -42,8 +42,9 @@
                     <!-- Contact and Address Block -->
                     <div class="bg-white border border-stone-200/80 p-8 sm:p-10 space-y-6 shadow-xs">
                         <div class="flex items-baseline justify-between pb-4 border-b border-stone-200/80">
-                            <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900">
-                                📍 {{ __('checkout.contact_shipping') }}
+                            <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <span>{{ __('checkout.contact_shipping') }}</span>
                             </h2>
                             @guest
                                 <a href="{{ route('login') }}" class="text-[10.5px] uppercase tracking-wider font-semibold text-stone-500 hover:text-stone-900 transition-colors">
@@ -156,13 +157,16 @@
 
                     <!-- Payment Method Block -->
                     <div class="bg-white border border-stone-200/80 p-8 sm:p-10 space-y-5 shadow-xs">
-                        <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 pb-4 border-b border-stone-200/80">
-                            💳 {{ __('checkout.payment_method') }}
+                        <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 pb-4 border-b border-stone-200/80 flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            <span>{{ __('checkout.payment_method') }}</span>
                         </h2>
 
                         <!-- Cash on Delivery Selection Box -->
                         <div class="p-5 border border-stone-900 bg-[#FAF8F5] flex items-start gap-4">
-                            <span class="text-xl">💵</span>
+                            <div class="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-[#C5A059] shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            </div>
                             <div>
                                 <h4 class="font-serif text-base text-stone-900 font-normal">
                                     {{ __('checkout.cod_title') }}
@@ -175,7 +179,10 @@
 
                         <!-- Coming soon online payment info -->
                         <div class="p-3.5 bg-[#FAF8F5] border border-stone-200/80 text-[11px] text-stone-400 flex items-center justify-between font-light">
-                            <span>💳 Carte Bancaire CMI / Visa / Mastercard</span>
+                            <span class="flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                <span>Carte Bancaire CMI / Visa / Mastercard</span>
+                            </span>
                             <span class="font-medium text-stone-500 uppercase tracking-widest text-[9.5px]">Bientôt disponible</span>
                         </div>
                     </div>
@@ -246,9 +253,15 @@
                     </button>
 
                     <!-- Trust indicators -->
-                    <div class="p-4 bg-[#FAF8F5] border border-stone-200/70 text-[11px] text-stone-500 space-y-1.5 font-light">
-                        <div>🔒 <strong>Achat 100% sécurisé :</strong> Aucune carte bancaire requise en ligne.</div>
-                        <div>📦 <strong>Ouverture du colis :</strong> Vérifiez vos pièces avant règlement en espèces.</div>
+                    <div class="p-4 bg-[#FAF8F5] border border-stone-200/70 text-[11px] text-stone-500 space-y-2 font-light">
+                        <div class="flex items-start gap-2">
+                            <span class="text-[#C5A059] font-serif">✦</span>
+                            <span><strong>Achat 100% sécurisé :</strong> Aucune carte bancaire requise en ligne.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-[#C5A059] font-serif">✦</span>
+                            <span><strong>Ouverture du colis :</strong> Vérifiez vos pièces avant règlement en espèces.</span>
+                        </div>
                     </div>
                 </div>
 

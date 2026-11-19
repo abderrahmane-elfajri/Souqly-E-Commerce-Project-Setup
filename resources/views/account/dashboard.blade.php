@@ -54,8 +54,9 @@
                 <!-- Shipping Address Card -->
                 <div class="bg-white border border-stone-200/80 p-7 shadow-xs">
                     <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-stone-200/80">
-                        <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900">
-                            📍 {{ __('account.addresses') }}
+                        <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <span>{{ __('account.addresses') }}</span>
                         </h3>
                         <span class="text-[9.5px] uppercase tracking-widest text-[#C5A059] font-medium">{{ __('account.default_badge') }}</span>
                     </div>
@@ -65,8 +66,9 @@
                             <div class="font-serif text-base text-stone-900">{{ $defaultAddress->full_name }}</div>
                             <div class="text-stone-600 font-light">{{ $defaultAddress->address }}</div>
                             <div class="text-stone-800 font-medium">{{ $defaultAddress->city }} {{ $defaultAddress->postal_code ? '('.$defaultAddress->postal_code.')' : '' }}</div>
-                            <div class="text-stone-500 font-mono text-[11px] pt-1">
-                                📞 {{ $defaultAddress->phone }}
+                            <div class="text-stone-500 font-mono text-[11px] pt-1 flex items-center gap-1.5">
+                                <svg class="w-3 h-3 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                <span>{{ $defaultAddress->phone }}</span>
                             </div>
                         </div>
                     @else
@@ -76,8 +78,9 @@
 
                 <!-- Update Profile Form -->
                 <div class="bg-white border border-stone-200/80 p-7 shadow-xs">
-                    <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 mb-5 pb-3 border-b border-stone-200/80">
-                        👤 {{ __('account.profile') }}
+                    <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 mb-5 pb-3 border-b border-stone-200/80 flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <span>{{ __('account.profile') }}</span>
                     </h3>
 
                     <form action="{{ route('account.profile.update') }}" method="POST" class="space-y-5">
@@ -122,8 +125,9 @@
                 <div class="bg-white border border-stone-200/80 p-7 shadow-xs min-h-[420px] flex flex-col justify-between">
                     <div>
                         <div class="flex items-baseline justify-between mb-6 pb-3 border-b border-stone-200/80">
-                            <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900">
-                                📦 {{ __('account.orders') }}
+                            <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-900 flex items-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                                <span>{{ __('account.orders') }}</span>
                             </h3>
                             @if($recentOrders->isNotEmpty())
                                 <a href="{{ route('account.orders.index') }}" class="text-[10.5px] uppercase tracking-wider font-semibold text-stone-900 hover:text-[#C5A059] transition-colors">
@@ -164,8 +168,8 @@
                         @else
                             <!-- Orders Empty state -->
                             <div class="text-center py-16 px-4 space-y-3">
-                                <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-2xl text-stone-400">
-                                    🛍️
+                                <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-stone-400">
+                                    <svg class="w-6 h-6 stroke-[#C5A059]" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                                 </div>
                                 <h4 class="font-serif text-xl text-stone-900 font-normal">
                                     {{ __('account.no_orders') }}

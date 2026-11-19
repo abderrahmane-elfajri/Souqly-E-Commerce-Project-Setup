@@ -99,7 +99,7 @@
             <!-- French Description Tab -->
             <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-                    <span class="text-base">🇫🇷</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 font-mono">FR</span>
                     <h3 class="font-bold text-slate-900 text-sm">Contenu en Français</h3>
                 </div>
 
@@ -128,7 +128,7 @@
             <!-- Arabic Description Tab with RTL -->
             <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4" dir="rtl">
                 <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-                    <span class="text-base">🇲🇦</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 font-mono">AR</span>
                     <h3 class="font-bold text-slate-900 text-sm font-heading">المحتوى باللغة العربية</h3>
                 </div>
 
@@ -157,7 +157,7 @@
             <!-- English Description Tab -->
             <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-                    <span class="text-base">🇬🇧</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 font-mono">EN</span>
                     <h3 class="font-bold text-slate-900 text-sm">English Content</h3>
                 </div>
 

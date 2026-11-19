@@ -8,8 +8,8 @@
         
         <!-- Search Card Minimalist -->
         <div class="bg-white border border-stone-200/80 p-8 sm:p-14 mb-12 text-center shadow-xs">
-            <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200 text-stone-700 flex items-center justify-center mx-auto mb-4 text-2xl">
-                🚚
+            <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200 text-[#C5A059] flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
             </div>
             <span class="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-medium block mb-1">SUIVI DE COLIS & PORTEUR</span>
             <h1 class="font-serif text-3xl sm:text-4xl text-stone-900 font-normal mb-3">{{ __('orders.public_tracking') }}</h1>
@@ -64,7 +64,8 @@
                     </div>
 
                     <a href="{{ $order->whatsapp_inquiry_url }}" target="_blank" rel="noopener noreferrer" class="text-[11px] uppercase tracking-wider font-semibold text-emerald-800 hover:text-emerald-950 transition-colors flex items-center gap-1.5">
-                        <span>📲 WhatsApp Concierge</span>
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.004.577 1.764.846 2.806.847h.005c3.182 0 5.768-2.587 5.768-5.768z"/></svg>
+                        <span>WhatsApp Concierge</span>
                     </a>
                 </div>
 

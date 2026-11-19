@@ -39,7 +39,8 @@
         <!-- Restock Box -->
         <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
             <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                <span>📥</span> Réapprovisionnement de Stock (Entrée)
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>Réapprovisionnement de Stock (Entrée)</span>
             </h3>
 
             <form method="POST" action="{{ route('admin.inventory.restock') }}" class="space-y-4">
@@ -117,7 +118,8 @@
     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                <span>📦</span> Niveaux de Stock par Produit
+                <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span>Niveaux de Stock par Produit</span>
             </h3>
 
             <div class="flex items-center gap-2 text-xs">
@@ -189,7 +191,8 @@
     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="p-6 border-b border-slate-200">
             <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                <span>📋</span> Journal Complet d'Audit des Mouvements (Traceabilité)
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <span>Journal Complet d'Audit des Mouvements (Traceabilité)</span>
             </h3>
             <p class="text-xs text-slate-500 mt-1">Historique immuable de chaque variation de stock (achats, annulations, réapprovisionnements).</p>
         </div>

@@ -34,8 +34,8 @@
         @if($cart->items->isEmpty())
             <!-- Empty Cart State Minimalist -->
             <div class="bg-white border border-stone-200/80 p-16 text-center max-w-xl mx-auto space-y-4 shadow-xs">
-                <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-3xl mx-auto mb-2 text-stone-400">
-                    🛍️
+                <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto mb-2 text-[#C5A059]">
+                    <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                 </div>
                 <h2 class="font-serif text-2xl text-stone-900 font-normal">
                     {{ __('cart.empty_title') }}
@@ -160,8 +160,9 @@
                         </div>
 
                         @if($cart->subtotal < 500)
-                            <div class="p-3 bg-[#FAF8F5] border border-stone-200 text-stone-600 text-[11px] font-light leading-relaxed">
-                                💡 Ajoutez encore <strong>{{ number_format(500 - $cart->subtotal, 2) }} MAD</strong> pour bénéficier de la livraison offerte par porteur !
+                            <div class="p-3 bg-[#FAF8F5] border border-stone-200 text-stone-600 text-[11px] font-light leading-relaxed flex items-start gap-2">
+                                <span class="text-[#C5A059] font-serif text-sm leading-none">✦</span>
+                                <span>Ajoutez encore <strong>{{ number_format(500 - $cart->subtotal, 2) }} MAD</strong> pour bénéficier de la livraison offerte par porteur !</span>
                             </div>
                         @endif
 
@@ -181,7 +182,10 @@
 
                     <!-- Moroccan Trust Pill -->
                     <div class="p-4 bg-[#FAF8F5] border border-stone-200/70 text-[11px] text-stone-500 text-center space-y-1 font-light">
-                        <span class="font-medium text-stone-900 uppercase tracking-wider text-[10px] block">💵 Paiement 100% à la livraison (COD)</span>
+                        <span class="font-medium text-stone-900 uppercase tracking-wider text-[10px] flex items-center justify-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            <span>Paiement 100% à la livraison (COD)</span>
+                        </span>
                         <span>Vérifiez vos pièces avec le livreur avant de régler en espèces.</span>
                     </div>
                 </div>

@@ -99,20 +99,20 @@
                 <span class="block text-center text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3">
                     {{ __('auth.demo_accounts') }}
                 </span>
-                <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="grid grid-cols-2 gap-2.5 text-xs">
                     <button 
                         type="button" 
                         onclick="fillLogin('admin@souqly.ma', 'password123')"
-                        class="p-2.5 rounded-lg border border-slate-200 hover:border-souqly-orange hover:bg-orange-50/50 text-slate-700 font-semibold transition text-center"
+                        class="p-2.5 bg-[#FAF8F5] border border-stone-300 hover:border-[#C5A059] text-stone-900 font-semibold uppercase tracking-wider text-[10px] transition text-center"
                     >
-                        👑 Super Admin
+                        Administrateur
                     </button>
                     <button 
                         type="button" 
                         onclick="fillLogin('client@souqly.ma', 'password123')"
-                        class="p-2.5 rounded-lg border border-slate-200 hover:border-souqly-orange hover:bg-orange-50/50 text-slate-700 font-semibold transition text-center"
+                        class="p-2.5 bg-[#FAF8F5] border border-stone-300 hover:border-[#C5A059] text-stone-900 font-semibold uppercase tracking-wider text-[10px] transition text-center"
                     >
-                        🛍️ Client Test
+                        Client Démo
                     </button>
                 </div>
             </div>

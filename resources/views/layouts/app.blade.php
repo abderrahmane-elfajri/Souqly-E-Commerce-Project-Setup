@@ -148,7 +148,7 @@
                     @auth
                         @if(auth()->user()->isAdmin())
                             <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-amber-600/50 bg-amber-950/20 hover:bg-amber-950/40 text-[#C5A059] text-[10px] tracking-widest uppercase font-semibold transition">
-                                <span>👑 Admin</span>
+                                <span>Administration</span>
                             </a>
                         @endif
 
@@ -237,7 +237,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Trust 1 -->
                 <div class="flex items-start gap-4 p-5 bg-white border border-stone-200/70 hover:border-stone-400/80 transition-all duration-300">
-                    <span class="text-2xl text-[#C5A059] shrink-0 font-light">⚜️</span>
+                    <div class="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-center text-[#C5A059] shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                    </div>
                     <div>
                         <h4 class="font-serif font-medium text-stone-900 text-sm tracking-wide">
                             {{ app()->getLocale() === 'ar' ? 'توصيل خاص وسريع' : (app()->getLocale() === 'en' ? 'Express White-Glove Delivery' : 'Livraison Express par Porteur') }}
@@ -250,7 +252,9 @@
 
                 <!-- Trust 2 -->
                 <div class="flex items-start gap-4 p-5 bg-white border border-stone-200/70 hover:border-stone-400/80 transition-all duration-300">
-                    <span class="text-2xl text-[#C5A059] shrink-0 font-light">💵</span>
+                    <div class="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-center text-[#C5A059] shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
                     <div>
                         <h4 class="font-serif font-medium text-stone-900 text-sm tracking-wide">
                             {{ app()->getLocale() === 'ar' ? 'الدفع عند الاستلام (COD)' : (app()->getLocale() === 'en' ? 'Cash on Delivery (COD)' : 'Paiement à la Livraison (COD)') }}
@@ -263,7 +267,9 @@
 
                 <!-- Trust 3 -->
                 <div class="flex items-start gap-4 p-5 bg-white border border-stone-200/70 hover:border-stone-400/80 transition-all duration-300">
-                    <span class="text-2xl text-[#C5A059] shrink-0 font-light">🛡️</span>
+                    <div class="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-center text-[#C5A059] shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
                     <div>
                         <h4 class="font-serif font-medium text-stone-900 text-sm tracking-wide">
                             {{ app()->getLocale() === 'ar' ? 'ضمان الأصالة 100%' : (app()->getLocale() === 'en' ? 'Authenticity & Guarantee' : 'Authenticité & Garantie 7 Jours') }}
@@ -276,7 +282,9 @@
 
                 <!-- Trust 4 -->
                 <div class="flex items-start gap-4 p-5 bg-white border border-stone-200/70 hover:border-stone-400/80 transition-all duration-300">
-                    <span class="text-2xl text-[#C5A059] shrink-0 font-light">💬</span>
+                    <div class="w-10 h-10 rounded-full bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-center text-[#C5A059] shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
                     <div>
                         <h4 class="font-serif font-medium text-stone-900 text-sm tracking-wide">
                             {{ app()->getLocale() === 'ar' ? 'خدمة الزبناء الخاصة 7/7' : (app()->getLocale() === 'en' ? 'Private Concierge 7/7' : 'Conciergerie Privée Dédiée') }}
@@ -336,8 +344,8 @@
                     </h4>
                     <ul class="space-y-2.5 text-xs text-stone-400 font-light tracking-wide">
                         <li>
-                            <a href="{{ route('track') }}" class="text-[#C5A059] hover:text-amber-300 transition-colors flex items-center gap-1.5 font-medium">
-                                <span>🚚</span> 
+                            <a href="{{ route('track') }}" class="text-[#C5A059] hover:text-amber-300 transition-colors flex items-center gap-2 font-medium">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
                                 <span>{{ app()->getLocale() === 'ar' ? 'تتبع مسار شحنتك' : 'Suivre mon colis en direct' }}</span>
                             </a>
                         </li>
@@ -355,10 +363,12 @@
                     </h4>
                     <div class="flex flex-col gap-2">
                         <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#141F32] text-stone-200 text-[11px] font-medium border border-stone-800">
-                            💵 Paiement à la livraison (COD)
+                            <svg class="w-3.5 h-3.5 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            <span>Paiement à la livraison (COD)</span>
                         </span>
                         <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#141F32] text-stone-400 text-[11px] border border-stone-800">
-                            💳 CMI / Carte Bancaire (Bientôt)
+                            <svg class="w-3.5 h-3.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            <span>CMI / Carte Bancaire (Bientôt)</span>
                         </span>
                     </div>
                     <p class="text-[11px] text-stone-500 leading-relaxed pt-2">

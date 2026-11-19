@@ -41,7 +41,7 @@
                     {{ __('checkout.shipping_details') }}
                 </h2>
                 <span class="text-[10px] uppercase tracking-widest text-[#C5A059] font-medium">
-                    🇲🇦 {{ $order->shipping_city }}
+                    Maroc • {{ $order->shipping_city }}
                 </span>
             </div>
 
@@ -52,7 +52,10 @@
                         {{ __('checkout.recipient_contact') }}
                     </span>
                     <div class="font-serif text-base text-stone-900">{{ $order->customer_name }}</div>
-                    <div class="text-stone-600 font-mono text-[11px]">📞 {{ $order->customer_phone }}</div>
+                    <div class="text-stone-600 font-mono text-[11px] flex items-center gap-1.5">
+                        <svg class="w-3 h-3 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span>{{ $order->customer_phone }}</span>
+                    </div>
                     <div class="text-stone-500 text-[11px] font-light">{{ $order->customer_email }}</div>
                 </div>
 
@@ -62,8 +65,9 @@
                     </span>
                     <div class="text-stone-700 font-light">{{ $order->shipping_address }}</div>
                     <div class="font-medium text-stone-900">{{ $order->shipping_city }}, Maroc</div>
-                    <div class="text-emerald-800 text-[11px] font-medium pt-1">
-                        🚚 {{ __('checkout.delivery_notice') }}
+                    <div class="text-emerald-800 text-[11px] font-medium pt-1 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                        <span>{{ __('checkout.delivery_notice') }}</span>
                     </div>
                 </div>
             </div>

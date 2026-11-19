@@ -175,7 +175,9 @@
                 <!-- Products Grid -->
                 @if($products->isEmpty())
                     <div class="bg-white p-14 text-center border border-stone-200/80 space-y-4">
-                        <div class="text-3xl text-stone-300">🔍</div>
+                        <div class="w-12 h-12 rounded-full bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-stone-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
                         <h3 class="font-serif text-xl text-stone-800">
                             {{ app()->getLocale() === 'ar' ? 'لا توجد منتجات مطابقة للبحث' : 'Aucune pièce ne correspond à vos critères' }}
                         </h3>

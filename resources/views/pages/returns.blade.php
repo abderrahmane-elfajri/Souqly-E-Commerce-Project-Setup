@@ -61,9 +61,11 @@
                 <a 
                     href="https://wa.me/212600000000?text={{ rawurlencode('Bonjour Souqly, je souhaite effectuer un échange ou retour pour ma commande.') }}" 
                     target="_blank"
-                    class="btn-primary text-[10px] uppercase tracking-[0.2em] px-6 py-3 font-semibold inline-block"
+                    class="btn-primary text-[10px] uppercase tracking-[0.2em] px-6 py-3 font-semibold inline-flex items-center gap-2"
                 >
-                    <span>💬 {{ __('common.whatsapp_concierge') }} &rarr;</span>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.004.577 1.764.846 2.806.847h.005c3.182 0 5.768-2.587 5.768-5.768z"/></svg>
+                    <span>{{ __('common.whatsapp_concierge') }}</span>
+                    <span>&rarr;</span>
                 </a>
             </div>
 

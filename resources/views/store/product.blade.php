@@ -58,14 +58,17 @@
 
                     <!-- Quiet Luxury Guarantees under Gallery -->
                     <div class="grid grid-cols-3 gap-3 text-center text-[10.5px] uppercase tracking-wider text-stone-600 font-medium pt-2">
-                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70">
-                            🚚 Porteur 24/48h Maroc
+                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70 flex flex-col items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                            <span>Porteur 24/48h Maroc</span>
                         </div>
-                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70">
-                            💵 Contrôle à Réception
+                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70 flex flex-col items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            <span>Contrôle à Réception</span>
                         </div>
-                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70">
-                            🛡️ Écrin & Garantie 7J
+                        <div class="p-3 bg-[#FAF8F5] border border-stone-200/70 flex flex-col items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span>Écrin & Garantie 7J</span>
                         </div>
                     </div>
                 </div>
@@ -161,8 +164,9 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn-primary flex-1 py-4 text-[11px] uppercase tracking-[0.2em] font-semibold">
-                                <span>🛒 {{ __('common.add_to_cart') }}</span>
+                            <button type="submit" class="btn-primary flex-1 py-4 text-[11px] uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                <span>{{ __('common.add_to_cart') }}</span>
                             </button>
                         </div>
                     </form>
@@ -174,15 +178,22 @@
                     <a 
                         href="https://wa.me/212600000000?text={{ $waMessage }}"
                         target="_blank"
-                        class="btn-primary w-full py-3.5 text-[11px] uppercase tracking-[0.18em] bg-emerald-900 hover:bg-emerald-950 text-white border-emerald-800 flex items-center justify-center gap-2"
+                        class="btn-primary w-full py-3.5 text-[11px] uppercase tracking-[0.18em] bg-emerald-900 hover:bg-emerald-950 text-white border-emerald-800 flex items-center justify-center gap-2 transition"
                     >
-                        <span>📲 Commander par WhatsApp Concierge</span>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.004.577 1.764.846 2.806.847h.005c3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768z"/></svg>
+                        <span>Commander par WhatsApp Concierge</span>
                     </a>
 
                     <!-- Moroccan City Delivery Bullet points -->
                     <div class="pt-4 border-t border-stone-200/80 text-xs text-stone-500 space-y-1.5 font-light">
-                        <div>🇲🇦 <strong>Villes desservies :</strong> Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir, Oujda, Meknès...</div>
-                        <div>💵 <strong>Modalité de paiement :</strong> Règlement en espèces au livreur après ouverture et contrôle de la pièce.</div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-[#C5A059] font-serif">✦</span>
+                            <span><strong>Villes desservies :</strong> Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir, Oujda, Meknès...</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-[#C5A059] font-serif">✦</span>
+                            <span><strong>Modalité de paiement :</strong> Règlement en espèces au livreur après ouverture et contrôle de la pièce.</span>
+                        </div>
                     </div>
 
                 </div>
