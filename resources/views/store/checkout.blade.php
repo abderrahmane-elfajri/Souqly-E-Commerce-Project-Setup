@@ -26,6 +26,10 @@
 
         <form action="{{ route('checkout.process') }}" method="POST">
             @csrf
+            {{-- Honeypot anti-spam field --}}
+            <div class="hidden" aria-hidden="true" style="display:none;">
+                <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 

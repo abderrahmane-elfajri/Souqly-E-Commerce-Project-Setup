@@ -28,6 +28,7 @@ class CheckoutRequest extends FormRequest
             'city' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:500'],
             'notes' => ['nullable', 'string', 'max:1000'],
+            'website_hp' => ['prohibited'],
         ];
     }
 

@@ -8,6 +8,47 @@
     <title>@yield('title', 'SOUQLY — ' . __('common.tagline', ['default' => 'Smart Commerce Platform | Everything you need. One place.']))</title>
     <meta name="description" content="@yield('meta_description', 'Souqly — Première plateforme e-commerce multi-catégories au Maroc. Montres, Électronique, Mode, Maison. Paiement à la livraison dans tout le Maroc.')">
 
+    <!-- OpenGraph & Social Cards -->
+    <meta property="og:site_name" content="SOUQLY">
+    <meta property="og:title" content="@yield('title', 'SOUQLY — Smart Commerce Platform')">
+    <meta property="og:description" content="@yield('meta_description', 'Souqly — Première plateforme e-commerce multi-catégories au Maroc.')">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="{{ app()->getLocale() === 'ar' ? 'ar_MA' : (app()->getLocale() === 'en' ? 'en_US' : 'fr_MA') }}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- JSON-LD Moroccan Organization / LocalBusiness Schema (Agence Web4U Standard) -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@type' => 'OnlineStore',
+      'name' => 'SOUQLY',
+      'alternateName' => 'سوقلي',
+      'url' => url('/'),
+      'description' => 'Plateforme e-commerce multi-catégories au Maroc avec paiement à la livraison.',
+      'telephone' => '+212522000000',
+      'priceRange' => 'MAD',
+      'currenciesAccepted' => 'MAD',
+      'paymentAccepted' => 'Cash on Delivery',
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => "Boulevard d'Anfa",
+        'addressLocality' => 'Casablanca',
+        'postalCode' => '20050',
+        'addressCountry' => 'MA',
+      ],
+      'geo' => [
+        '@type' => 'GeoCoordinates',
+        'latitude' => '33.589886',
+        'longitude' => '-7.603869',
+      ],
+      'potentialAction' => [
+        '@type' => 'SearchAction',
+        'target' => url('/shop') . '?q={search_term_string}',
+        'query-input' => 'required name=search_term_string',
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
+
     <!-- Fonts: Plus Jakarta Sans for Latin, Cairo for Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,10 +112,11 @@
 
                 <!-- Search Bar -->
                 <div class="hidden md:flex flex-1 max-w-xl mx-4">
-                    <form action="#" method="GET" class="w-full relative">
+                    <form action="{{ route('shop') }}" method="GET" class="w-full relative">
                         <input 
                             type="search" 
-                            name="q"
+                            name="q" 
+                            value="{{ request('q', '') }}"
                             placeholder="{{ app()->getLocale() === 'ar' ? 'ابحث عن منتجات، علامات تجارية، فئات...' : (app()->getLocale() === 'en' ? 'Search products, brands, categories...' : 'Rechercher des produits, marques, catégories...') }}" 
                             class="w-full bg-souqly-navy-light text-white placeholder-slate-400 text-sm rounded-xl py-3 px-4 ps-11 pe-24 focus:outline-none focus:ring-2 focus:ring-souqly-orange border border-slate-700 transition"
                         >
@@ -312,6 +354,7 @@
                         {{ app()->getLocale() === 'ar' ? 'خدمة الزبناء' : 'Service Client' }}
                     </h4>
                     <ul class="space-y-2 text-xs">
+                        <li><a href="{{ route('track') }}" class="hover:text-souqly-orange transition font-semibold text-souqly-orange flex items-center gap-1"><span>🚚</span> <span>{{ app()->getLocale() === 'ar' ? 'تتبع مسار شحنتك' : 'Suivre mon colis en direct' }}</span></a></li>
                         <li><a href="/faq" class="hover:text-souqly-orange transition">Questions fréquentes (FAQ)</a></li>
                         <li><a href="/shipping-policy" class="hover:text-souqly-orange transition">Livraison & Délais</a></li>
                         <li><a href="/return-policy" class="hover:text-souqly-orange transition">Politique de retour</a></li>
