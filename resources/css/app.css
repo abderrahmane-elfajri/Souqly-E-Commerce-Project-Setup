@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import './store.css';
+@import './admin.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --color-souqly-navy: #101D32;
+    --color-souqly-navy-dark: #0A1220;
+    --color-souqly-navy-light: #1A2E4E;
+    --color-souqly-orange: #F28A32;
+    --color-souqly-orange-hover: #DD7520;
+    --color-souqly-orange-light: #FFF6EE;
+    --font-sans: 'Plus Jakarta Sans', 'Cairo', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}

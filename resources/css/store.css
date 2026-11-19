@@ -1,0 +1,156 @@
+/**
+ * SOUQLY — Storefront Design System & Base Styles
+ * Brand: Dark Navy (#101D32) | Vibrant Orange (#F28A32) | Clean White (#FFFFFF)
+ * Markets: Morocco (French / Arabic RTL / English)
+ */
+
+:root {
+  --color-primary: #101D32;
+  --color-primary-dark: #0A1220;
+  --color-primary-light: #1A2E4E;
+  --color-accent: #F28A32;
+  --color-accent-hover: #DD7520;
+  --color-accent-light: #FFF6EE;
+  
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-border-light: #EDF2F7;
+  
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-inverse: #FFFFFF;
+  
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(16, 29, 50, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(16, 29, 50, 0.08), 0 2px 4px -2px rgba(16, 29, 50, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(16, 29, 50, 0.1), 0 4px 6px -4px rgba(16, 29, 50, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(16, 29, 50, 0.12), 0 8px 10px -6px rgba(16, 29, 50, 0.06);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+}
+
+/* Base resets & typography */
+html {
+  font-family: var(--font-latin);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  scroll-behavior: smooth;
+}
+
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Utility brand classes */
+.bg-souqly-navy { background-color: var(--color-primary); }
+.bg-souqly-navy-dark { background-color: var(--color-primary-dark); }
+.bg-souqly-navy-light { background-color: var(--color-primary-light); }
+.bg-souqly-orange { background-color: var(--color-accent); }
+.bg-souqly-orange-light { background-color: var(--color-accent-light); }
+
+.text-souqly-navy { color: var(--color-primary); }
+.text-souqly-orange { color: var(--color-accent); }
+.border-souqly-orange { border-color: var(--color-accent); }
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(242, 138, 50, 0.25);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(242, 138, 50, 0.35);
+}
+
+.btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid var(--color-primary-light);
+}
+.btn-navy:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-border);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  background-color: #FFFFFF;
+}
+
+/* Badge */
+.badge-currency {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}

@@ -1,0 +1,20 @@
+<?php
+
+return [
+    'app_name' => 'Souqly',
+    'tagline' => 'Smart Commerce Platform | Tout ce dont vous avez besoin. En un seul endroit.',
+    'currency' => 'MAD',
+    'currency_symbol' => 'د.م.',
+    'home' => 'Accueil',
+    'shop' => 'Boutique',
+    'cart' => 'Panier',
+    'checkout' => 'Commander',
+    'account' => 'Mon Compte',
+    'orders' => 'Mes Commandes',
+    'wishlist' => 'Favoris',
+    'search_placeholder' => 'Rechercher des produits, marques, catégories...',
+    'cash_on_delivery' => 'Paiement à la livraison',
+    'delivery_morocco' => 'Livraison partout au Maroc sous 24-48h',
+    'add_to_cart' => 'Ajouter au panier',
+    'buy_now' => 'Acheter maintenant',
+];
