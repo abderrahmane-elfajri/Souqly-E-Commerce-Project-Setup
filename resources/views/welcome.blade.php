@@ -178,8 +178,9 @@
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0B1320]/80 via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 start-3 text-white text-xs font-serif tracking-wider">
-                            <span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-widest font-sans bg-stone-900/80 border border-stone-700 text-[#C5A059]">
-                                {{ $category->icon ?? '✦' }} COLLECTION
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[9px] uppercase tracking-widest font-sans bg-[#0B1320]/85 backdrop-blur-sm border border-stone-700/80 text-[#C5A059]">
+                                {!! $category->renderSvgIcon('w-3 h-3 text-[#C5A059] shrink-0') !!}
+                                <span>{{ app()->getLocale() === 'ar' ? 'تشكيلة مختارة' : 'COLLECTION' }}</span>
                             </span>
                         </div>
                     </div>

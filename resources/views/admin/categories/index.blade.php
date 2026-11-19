@@ -35,7 +35,10 @@
                             $en = $cat->translations->firstWhere('locale', 'en')?->name;
                         @endphp
                         <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3.5 px-4 font-bold text-slate-900">{{ $fr ?? $cat->slug }}</td>
+                            <td class="py-3.5 px-4 font-bold text-slate-900 flex items-center gap-2.5">
+                                {!! $cat->renderSvgIcon('w-4 h-4 text-purple-600 shrink-0') !!}
+                                <span>{{ $fr ?? $cat->slug }}</span>
+                            </td>
                             <td class="py-3.5 px-4 font-bold text-slate-900 text-right font-heading" dir="rtl">{{ $ar ?? '—' }}</td>
                             <td class="py-3.5 px-4 text-slate-600">{{ $en ?? '—' }}</td>
                             <td class="py-3.5 px-4 font-mono text-slate-500 text-[11px]">{{ $cat->slug }}</td>

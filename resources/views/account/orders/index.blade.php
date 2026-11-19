@@ -29,16 +29,16 @@
 
         @if(session('success'))
             <div class="mb-8 p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium flex items-center gap-3">
-                <span class="text-emerald-600 text-base">✓</span>
+                <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 <span>{{ session('success') }}</span>
             </div>
         @endif
 
         @if($orders->isEmpty())
             <div class="bg-white p-16 text-center border border-stone-200/80 space-y-4 shadow-xs">
-                <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-stone-400">
-                    <svg class="w-8 h-8 stroke-[1.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-200 flex items-center justify-center mx-auto text-[#C5A059]">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                 </div>
                 <h3 class="font-serif text-2xl text-stone-900 font-normal">{{ __('orders.empty') }}</h3>

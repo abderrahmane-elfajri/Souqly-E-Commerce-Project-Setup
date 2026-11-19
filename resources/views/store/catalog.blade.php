@@ -69,7 +69,10 @@
                                 href="{{ route('shop', array_merge($filters, ['category' => null])) }}"
                                 class="flex items-center justify-between py-2 px-2 transition {{ empty($filters['category']) ? 'font-semibold text-stone-900 border-s-2 border-stone-900 ps-3 bg-[#FAF8F5]' : 'text-stone-500 hover:text-stone-900' }}"
                             >
-                                <span>{{ app()->getLocale() === 'ar' ? 'جميع الفئات' : 'Toutes les collections' }}</span>
+                                <span class="flex items-center gap-2.5">
+                                    <svg class="w-3.5 h-3.5 text-[#C5A059] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                                    <span>{{ app()->getLocale() === 'ar' ? 'جميع الفئات' : 'Toutes les collections' }}</span>
+                                </span>
                             </a>
                         </li>
                         @foreach($categories as $category)
@@ -78,8 +81,8 @@
                                     href="{{ route('shop', array_merge($filters, ['category' => $category->slug])) }}"
                                     class="flex items-center justify-between py-2 px-2 transition {{ ($filters['category'] ?? '') === $category->slug ? 'font-semibold text-stone-900 border-s-2 border-stone-900 ps-3 bg-[#FAF8F5]' : 'text-stone-500 hover:text-stone-900' }}"
                                 >
-                                    <span class="flex items-center gap-2">
-                                        <span class="text-xs">{{ $category->icon }}</span>
+                                    <span class="flex items-center gap-2.5">
+                                        {!! $category->renderSvgIcon('w-3.5 h-3.5 text-[#C5A059] shrink-0') !!}
                                         <span>{{ $category->name }}</span>
                                     </span>
                                     <span class="text-[10px] font-mono text-stone-400">

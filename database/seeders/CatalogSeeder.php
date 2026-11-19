@@ -21,7 +21,7 @@ class CatalogSeeder extends Seeder
         $categoriesData = [
             [
                 'slug' => 'luxury-watches',
-                'icon' => '⌚',
+                'icon' => 'watch',
                 'sort_order' => 1,
                 'translations' => [
                     'fr' => ['name' => 'Montres de Luxe', 'description' => 'Montres suisses et automatiques d\'exception.'],
@@ -31,7 +31,7 @@ class CatalogSeeder extends Seeder
             ],
             [
                 'slug' => 'electronics',
-                'icon' => '📱',
+                'icon' => 'device',
                 'sort_order' => 2,
                 'translations' => [
                     'fr' => ['name' => 'Électronique & High-Tech', 'description' => 'Objets connectés, écouteurs et accessoires dernier cri.'],
@@ -41,7 +41,7 @@ class CatalogSeeder extends Seeder
             ],
             [
                 'slug' => 'fashion',
-                'icon' => '👔',
+                'icon' => 'bag',
                 'sort_order' => 3,
                 'translations' => [
                     'fr' => ['name' => 'Mode & Accessoires', 'description' => 'Maroquinerie marocaine et prêt-à-porter de prestige.'],
@@ -51,7 +51,7 @@ class CatalogSeeder extends Seeder
             ],
             [
                 'slug' => 'home',
-                'icon' => '🏡',
+                'icon' => 'home',
                 'sort_order' => 4,
                 'translations' => [
                     'fr' => ['name' => 'Maison & Décoration', 'description' => 'Artisanat d\'art et décoration intérieure.'],

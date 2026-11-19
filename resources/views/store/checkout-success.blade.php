@@ -8,8 +8,10 @@
         
         <!-- Luxury Confirmation Header Card -->
         <div class="bg-white border border-stone-200/80 p-8 sm:p-14 text-center mb-8 shadow-xs">
-            <div class="w-16 h-16 bg-[#FAF8F5] border border-stone-300 text-[#C5A059] flex items-center justify-center font-serif text-2xl mx-auto mb-6">
-                ✓
+            <div class="w-16 h-16 rounded-full bg-[#FAF8F5] border border-[#C5A059]/40 text-[#C5A059] flex items-center justify-center mx-auto mb-6">
+                <svg class="w-7 h-7 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                </svg>
             </div>
             
             <span class="text-[10px] uppercase tracking-[0.25em] text-[#C5A059] font-medium block mb-2">

@@ -20,8 +20,9 @@
             <div class="text-2xl font-black text-slate-900 font-mono tracking-tight">
                 {{ number_format($metrics['total_revenue_mad'], 2) }} <span class="text-xs text-slate-500 font-normal">د.م.</span>
             </div>
-            <p class="text-xs text-emerald-600 font-semibold mt-2 flex items-center gap-1">
-                <span>✓</span> Encaissé / Livré en COD
+            <p class="text-xs text-emerald-600 font-semibold mt-2 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Encaissé / Livré en COD</span>
             </p>
         </div>
 
