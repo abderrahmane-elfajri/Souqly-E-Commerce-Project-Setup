@@ -31,6 +31,11 @@ class ProductVariant extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function inventoryMovements(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(InventoryMovement::class);
+    }
+
     public function getEffectivePriceAttribute(): string
     {
         return $this->price ?? $this->product->price;

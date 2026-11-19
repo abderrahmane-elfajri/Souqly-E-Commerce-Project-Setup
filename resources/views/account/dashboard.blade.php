@@ -25,13 +25,22 @@
                 </div>
             </div>
 
-            <!-- Logout Form -->
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn-outline text-xs px-4 py-2 text-rose-600 hover:border-rose-300 hover:bg-rose-50">
-                    Déconnexion
-                </button>
-            </form>
+            <div class="flex items-center gap-3">
+                <a href="{{ route('account.orders.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-souqly-orange text-white text-xs font-bold rounded-xl hover:bg-souqly-orange-hover shadow-sm transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Mes Commandes ({{ $user->orders()->count() }})</span>
+                </a>
+
+                <!-- Logout Form -->
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn-outline text-xs px-4 py-2 text-rose-600 hover:border-rose-300 hover:bg-rose-50">
+                        Déconnexion
+                    </button>
+                </form>
+            </div>
         </div>
 
         @if(session('success'))
@@ -118,26 +127,59 @@
                             <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
                                 <span>📦</span> {{ __('account.orders') }}
                             </h3>
-                            <a href="/shop" class="text-xs font-bold text-souqly-orange hover:underline">
-                                {{ __('account.explore_products') }} &rarr;
-                            </a>
+                            @if($recentOrders->isNotEmpty())
+                                <a href="{{ route('account.orders.index') }}" class="text-xs font-bold text-souqly-orange hover:underline">
+                                    Voir tout ({{ $user->orders()->count() }}) &rarr;
+                                </a>
+                            @else
+                                <a href="{{ route('shop') }}" class="text-xs font-bold text-souqly-orange hover:underline">
+                                    {{ __('account.explore_products') }} &rarr;
+                                </a>
+                            @endif
                         </div>
 
-                        <!-- Orders Placeholder state (Ready for Phase 5) -->
-                        <div class="text-center py-16 px-4">
-                            <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-3xl mb-4 text-slate-400">
-                                🛍️
+                        @if($recentOrders->isNotEmpty())
+                            <div class="space-y-3 mb-6">
+                                @foreach($recentOrders as $order)
+                                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+                                        <div>
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-mono font-bold text-slate-900">{{ $order->order_number }}</span>
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold {{ $order->status->badgeClasses() }}">
+                                                    {{ $order->status->label(app()->getLocale()) }}
+                                                </span>
+                                            </div>
+                                            <p class="text-slate-500 text-[11px] mt-0.5">
+                                                {{ $order->created_at->format('d/m/Y H:i') }} • {{ $order->items_count }} article(s) • {{ $order->shipping_city }}
+                                            </p>
+                                        </div>
+
+                                        <div class="flex items-center gap-3 self-end sm:self-center">
+                                            <span class="font-bold text-slate-900 text-sm">{{ number_format($order->total, 2) }} {{ $order->currency }}</span>
+                                            <a href="{{ route('account.orders.show', $order->order_number) }}" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-800 font-bold hover:bg-slate-100 transition">
+                                                Suivre &rarr;
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <h4 class="font-bold text-slate-800 text-sm">
-                                {{ __('account.no_orders') }}
-                            </h4>
-                            <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-6">
-                                Commandez vos articles préférés en paiement à la livraison (Cash on Delivery) partout au Maroc.
-                            </p>
-                            <a href="/shop" class="btn-primary text-xs px-6 py-3">
-                                Découvrir le catalogue SOUQLY
-                            </a>
-                        </div>
+                        @else
+                            <!-- Orders Empty state -->
+                            <div class="text-center py-16 px-4">
+                                <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-3xl mb-4 text-slate-400">
+                                    🛍️
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm">
+                                    {{ __('account.no_orders') }}
+                                </h4>
+                                <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-6">
+                                    Commandez vos articles préférés en paiement à la livraison (Cash on Delivery) partout au Maroc.
+                                </p>
+                                <a href="{{ route('shop') }}" class="btn-primary text-xs px-6 py-3">
+                                    Découvrir le catalogue SOUQLY
+                                </a>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Assistance box -->

@@ -187,6 +187,9 @@
                         <a href="/shop?promotions=1" class="text-amber-400 font-bold hover:text-amber-300 flex items-center gap-1 transition">
                             <span>🔥 {{ app()->getLocale() === 'ar' ? 'عروض خاصة' : (app()->getLocale() === 'en' ? 'Special Deals' : 'Promotions') }}</span>
                         </a>
+                        <a href="{{ route('track') }}" class="text-sky-300 hover:text-white flex items-center gap-1 font-semibold transition">
+                            <span>🚚 {{ app()->getLocale() === 'ar' ? 'تتبع شحنتك' : (app()->getLocale() === 'en' ? 'Track Order' : 'Suivre mon colis') }}</span>
+                        </a>
                     </div>
                     <div class="hidden md:flex items-center gap-4 text-slate-400">
                         <span>{{ app()->getLocale() === 'ar' ? 'خدمة الزبناء: 0522-000000' : 'Service Client: +212 522 00 00 00' }}</span>

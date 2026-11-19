@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class Order extends Model
@@ -52,6 +53,36 @@ class Order extends Model
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function shipments(): HasMany
+    {
+        return $this->hasMany(Shipment::class);
+    }
+
+    public function latestShipment(): HasOne
+    {
+        return $this->hasOne(Shipment::class)->latestOfMany();
+    }
+
+    public function canBeCancelled(): bool
+    {
+        return $this->status === OrderStatus::PENDING;
+    }
+
+    public function getItemsCountAttribute(): int
+    {
+        return (int) $this->items()->sum('quantity');
+    }
+
+    /**
+     * Build WhatsApp inquiry link tailored for Moroccan customer service
+     */
+    public function getWhatsappInquiryUrlAttribute(): string
+    {
+        $phone = '212600000000';
+        $msg = "Bonjour Souqly, je vous contacte concernant ma commande {$this->order_number} ({$this->customer_name}, {$this->shipping_city}).";
+        return "https://wa.me/{$phone}?text=" . rawurlencode($msg);
     }
 
     public static function generateOrderNumber(): string

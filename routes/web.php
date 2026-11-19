@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\OrderController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Store\CatalogController;
 use App\Http\Controllers\Store\CartController;
 use App\Http\Controllers\Store\CheckoutController;
+use App\Http\Controllers\Store\TrackingController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,10 @@ Route::get('/', function () {
 // Catalog & Product Details
 Route::get('/shop', [CatalogController::class, 'index'])->name('shop');
 Route::get('/product/{slug}', [CatalogController::class, 'show'])->name('product.show');
+
+// Public Parcel & Order Tracking
+Route::get('/track', [TrackingController::class, 'show'])->name('track');
+Route::post('/track', [TrackingController::class, 'track'])->name('track.search');
 
 // Shopping Cart Routes
 Route::prefix('cart')->name('cart.')->group(function () {
@@ -79,6 +85,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
         Route::put('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
         Route::put('/password', [AccountController::class, 'updatePassword'])->name('password.update');
+        
+        // Orders & Tracking
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{orderNumber}', [OrderController::class, 'show'])->name('orders.show');
+        Route::post('/orders/{orderNumber}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
     });
 
     // Admin Protected Suite (Requires 'admin' or 'super_admin' role)

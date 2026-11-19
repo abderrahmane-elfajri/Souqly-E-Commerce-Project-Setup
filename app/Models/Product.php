@@ -87,6 +87,11 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class)->where('is_active', true);
     }
 
+    public function inventoryMovements(): HasMany
+    {
+        return $this->hasMany(InventoryMovement::class);
+    }
+
     public function getDiscountPercentageAttribute(): ?int
     {
         if ($this->compare_at_price && $this->compare_at_price > $this->price) {

@@ -58,4 +58,57 @@ enum OrderStatus: string
             self::CANCELLED => 'bg-rose-100 text-rose-800',
         };
     }
+
+    /**
+     * Determine if order can transition to given target status.
+     */
+    public function canTransitionTo(OrderStatus $target): bool
+    {
+        if ($this === $target) {
+            return false;
+        }
+
+        // Terminal states cannot transition anywhere
+        if ($this === self::DELIVERED || $this === self::CANCELLED) {
+            return false;
+        }
+
+        return match($this) {
+            self::PENDING => in_array($target, [self::CONFIRMED, self::CANCELLED]),
+            self::CONFIRMED => in_array($target, [self::PROCESSING, self::CANCELLED]),
+            self::PROCESSING => in_array($target, [self::SHIPPED, self::CANCELLED]),
+            self::SHIPPED => in_array($target, [self::DELIVERED, self::CANCELLED]),
+            default => false,
+        };
+    }
+
+    /**
+     * Stepper step index (1-indexed) for order tracking progression.
+     */
+    public function stepIndex(): int
+    {
+        return match($this) {
+            self::PENDING => 1,
+            self::CONFIRMED => 2,
+            self::PROCESSING => 3,
+            self::SHIPPED => 4,
+            self::DELIVERED => 5,
+            self::CANCELLED => 0,
+        };
+    }
+
+    /**
+     * Percentage progress for tracking bar.
+     */
+    public function progressPercent(): int
+    {
+        return match($this) {
+            self::PENDING => 20,
+            self::CONFIRMED => 40,
+            self::PROCESSING => 65,
+            self::SHIPPED => 85,
+            self::DELIVERED => 100,
+            self::CANCELLED => 0,
+        };
+    }
 }

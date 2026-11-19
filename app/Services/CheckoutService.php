@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Enums\OrderStatus;
 use App\Enums\PaymentMethod;
 use App\Enums\PaymentStatus;
+use App\Events\OrderPlaced;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\DB;
 
 class CheckoutService
 {
+    public function __construct(protected InventoryService $inventoryService)
+    {
+    }
+
     /**
      * Place a Cash on Delivery (COD) order transactionally.
      */
@@ -26,29 +31,12 @@ class CheckoutService
         }
 
         return DB::transaction(function () use ($cart, $data, $user) {
-            // 1. Re-validate stock for every item with lock to avoid overselling
-            foreach ($cart->items as $item) {
-                if ($item->product_variant_id) {
-                    $variant = ProductVariant::where('id', $item->product_variant_id)->lockForUpdate()->firstOrFail();
-                    if ($variant->stock < $item->quantity) {
-                        throw new Exception("Le stock pour la variante {$item->variant->sku} est insuffisant (restant : {$variant->stock}).");
-                    }
-                    $variant->decrement('stock', $item->quantity);
-                } else {
-                    $product = Product::where('id', $item->product_id)->lockForUpdate()->firstOrFail();
-                    if ($product->stock < $item->quantity) {
-                        throw new Exception("Le stock pour {$product->name} est insuffisant (restant : {$product->stock}).");
-                    }
-                    $product->decrement('stock', $item->quantity);
-                }
-            }
-
-            // 2. Compute verified totals on server (Never trust client prices)
+            // 1. Compute verified totals on server (Never trust client prices)
             $subtotal = $cart->subtotal;
             $shippingCost = $cart->shipping_cost;
             $total = $subtotal + $shippingCost;
 
-            // 3. Create Order
+            // 2. Create Order
             $order = Order::create([
                 'user_id' => $user?->id,
                 'order_number' => Order::generateOrderNumber(),
@@ -68,23 +56,40 @@ class CheckoutService
                 'payment_status' => PaymentStatus::PENDING,
             ]);
 
-            // 4. Create Immutable Order Item snapshots
+            // 3. Deduct stock transactionally and create Immutable Order Item snapshots
             foreach ($cart->items as $item) {
+                $product = Product::where('id', $item->product_id)->lockForUpdate()->firstOrFail();
+                $variant = $item->product_variant_id 
+                    ? ProductVariant::where('id', $item->product_variant_id)->lockForUpdate()->firstOrFail() 
+                    : null;
+
+                // Deduct stock and log audit movement
+                $this->inventoryService->recordDeduction(
+                    $product,
+                    $variant,
+                    $item->quantity,
+                    $order->order_number,
+                    "Achat commande #{$order->order_number}"
+                );
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $item->product_id,
                     'product_variant_id' => $item->product_variant_id,
                     'product_name' => $item->product->name,
-                    'sku' => $item->variant?->sku ?? $item->product->sku,
+                    'sku' => $variant?->sku ?? $product->sku,
                     'unit_price' => $item->unit_price,
                     'quantity' => $item->quantity,
                     'total' => $item->subtotal,
-                    'variant_attributes' => $item->variant?->attributes,
+                    'variant_attributes' => $variant?->attributes,
                 ]);
             }
 
-            // 5. Clear Cart
+            // 4. Clear Cart
             $cart->items()->delete();
+
+            // 5. Fire Order Placed Event
+            event(new OrderPlaced($order));
 
             return $order;
         });

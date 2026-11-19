@@ -18,8 +18,9 @@ class AccountController extends Controller
     {
         $user = Auth::user()->load('addresses');
         $defaultAddress = $user->defaultAddress;
+        $recentOrders = $user->orders()->with(['items', 'latestShipment'])->latest()->take(5)->get();
 
-        return view('account.dashboard', compact('user', 'defaultAddress'));
+        return view('account.dashboard', compact('user', 'defaultAddress', 'recentOrders'));
     }
 
     /**
