@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'checkout' => 'Checkout & Order Confirmation',
+    'contact_shipping' => 'Contact & Delivery Details in Morocco',
+    'full_name' => 'Full Name',
+    'email' => 'Email Address',
+    'phone' => 'Moroccan Phone Number (For the delivery agent)',
+    'city' => 'Delivery City',
+    'address' => 'Full Address (Street, Building, Apt)',
+    'notes' => 'Delivery Notes / Special Instructions (Optional)',
+    'payment_method' => 'Payment Method',
+    'cod_title' => 'Cash on Delivery (COD)',
+    'cod_desc' => 'Pay cash to the delivery courier upon arrival and package inspection.',
+    'order_summary' => 'Order Summary',
+    'place_order' => 'Confirm Order (Cash on Delivery)',
+    'order_placed_success' => 'Congratulations! Your order has been placed successfully.',
+    'order_number' => 'Order Number',
+    'tracking_info' => 'Our customer service team will contact you by phone or WhatsApp to confirm your dispatch.',
+    'whatsapp_tracking' => 'Track Order via WhatsApp',
+    'back_to_shop' => 'Return to Shop',
+    'empty_cart_error' => 'Your cart is empty.',
+    'empty_cart_redirect' => 'Your cart is empty. Please add items before proceeding to checkout.',
+];

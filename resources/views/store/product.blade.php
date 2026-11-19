@@ -109,59 +109,62 @@
                         {{ $product->short_description }}
                     </p>
 
-                    <!-- Variants Selection if any -->
-                    @if($product->variants->isNotEmpty())
-                        <div class="space-y-3 pt-2">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
-                                {{ app()->getLocale() === 'ar' ? 'اختر النوع / المواصفات:' : 'Variantes disponibles :' }}
-                            </label>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach($product->variants as $variant)
-                                    <button 
-                                        type="button" 
-                                        class="px-4 py-2 rounded-xl border text-xs font-semibold border-slate-300 hover:border-souqly-orange hover:bg-orange-50/50 transition focus:ring-2 focus:ring-souqly-orange focus:border-transparent"
-                                    >
-                                        @foreach($variant->attributes as $key => $val)
-                                            <span>{{ $key }}: {{ $val }}</span>
-                                        @endforeach
-                                        @if($variant->price && $variant->price != $product->price)
-                                            <span class="text-souqly-orange ms-1">({{ number_format($variant->price, 2) }} MAD)</span>
-                                        @endif
-                                    </button>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
+                    <!-- Add to Cart Form with Variants and Quantity -->
+                    <form action="{{ route('cart.add') }}" method="POST" class="space-y-4 pt-2">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                    <!-- Action Buttons -->
-                    <div class="space-y-3 pt-4">
-                        <!-- Add to Cart (Ready for Phase 4) -->
-                        <div class="flex gap-3">
+                        @if($product->variants->isNotEmpty())
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                                    {{ app()->getLocale() === 'ar' ? 'اختر النوع / المواصفات:' : 'Variantes disponibles :' }}
+                                </label>
+                                <div class="flex flex-wrap gap-2">
+                                    @foreach($product->variants as $index => $variant)
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="variant_id" value="{{ $variant->id }}" {{ $index === 0 ? 'checked' : '' }} class="sr-only peer">
+                                            <span class="inline-block px-3.5 py-2 rounded-xl border text-xs font-semibold border-slate-300 peer-checked:border-souqly-orange peer-checked:bg-orange-50/70 peer-checked:text-souqly-orange transition">
+                                                @foreach($variant->attributes as $key => $val)
+                                                    {{ $key }}: {{ $val }}
+                                                @endforeach
+                                                @if($variant->price && $variant->price != $product->price)
+                                                    <span class="ms-1 font-bold">({{ number_format($variant->price, 2) }} MAD)</span>
+                                                @endif
+                                            </span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="flex gap-3 pt-2">
                             <div class="w-24">
-                                <select class="w-full text-xs font-bold px-3 py-3.5 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-souqly-orange">
+                                <select name="quantity" class="w-full text-xs font-bold px-3 py-3.5 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-souqly-orange">
                                     <option value="1">Qté: 1</option>
                                     <option value="2">Qté: 2</option>
                                     <option value="3">Qté: 3</option>
+                                    <option value="4">Qté: 4</option>
+                                    <option value="5">Qté: 5</option>
                                 </select>
                             </div>
 
-                            <a href="/cart" class="btn-primary flex-1 py-3.5 text-sm font-bold shadow-lg">
+                            <button type="submit" class="btn-primary flex-1 py-3.5 text-sm font-bold shadow-lg">
                                 <span>🛒 {{ __('common.add_to_cart') }}</span>
-                            </a>
+                            </button>
                         </div>
+                    </form>
 
-                        <!-- Direct WhatsApp Order Button (Moroccan Dominant Conversion) -->
-                        @php
-                            $waMessage = rawurlencode("Bonjour Souqly, je souhaite commander l'article : " . $product->name . " (Prix: " . number_format($product->price, 2) . " MAD, Réf: " . $product->sku . "). Merci de me confirmer la livraison.");
-                        @endphp
-                        <a 
-                            href="https://wa.me/212600000000?text={{ $waMessage }}"
-                            target="_blank"
-                            class="btn-primary w-full py-3 text-xs bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2"
-                        >
-                            <span>📲 Commander directement par WhatsApp</span>
-                        </a>
-                    </div>
+                    <!-- Direct WhatsApp Order Button (Moroccan Dominant Conversion) -->
+                    @php
+                        $waMessage = rawurlencode("Bonjour Souqly, je souhaite commander l'article : " . $product->name . " (Prix: " . number_format($product->price, 2) . " MAD, Réf: " . $product->sku . "). Merci de me confirmer la livraison.");
+                    @endphp
+                    <a 
+                        href="https://wa.me/212600000000?text={{ $waMessage }}"
+                        target="_blank"
+                        class="btn-primary w-full py-3 text-xs bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2"
+                    >
+                        <span>📲 Commander directement par WhatsApp</span>
+                    </a>
 
                     <!-- Moroccan City Delivery Bullet points -->
                     <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-1">

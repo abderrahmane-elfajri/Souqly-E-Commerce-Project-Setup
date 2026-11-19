@@ -4,6 +4,8 @@ use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Store\CatalogController;
+use App\Http\Controllers\Store\CartController;
+use App\Http\Controllers\Store\CheckoutController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +36,22 @@ Route::get('/', function () {
 // Catalog & Product Details
 Route::get('/shop', [CatalogController::class, 'index'])->name('shop');
 Route::get('/product/{slug}', [CatalogController::class, 'show'])->name('product.show');
+
+// Shopping Cart Routes
+Route::prefix('cart')->name('cart.')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/add', [CartController::class, 'add'])->name('add');
+    Route::patch('/{id}', [CartController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CartController::class, 'remove'])->name('remove');
+    Route::post('/clear', [CartController::class, 'clear'])->name('clear');
+});
+
+// Checkout Routes
+Route::prefix('checkout')->name('checkout.')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+    Route::post('/process', [CheckoutController::class, 'process'])->name('process');
+    Route::get('/success/{orderNumber}', [CheckoutController::class, 'success'])->name('success');
+});
 
 // Language Switcher
 Route::get('/locale/{locale}', function (string $locale) {
