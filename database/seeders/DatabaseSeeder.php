@@ -67,5 +67,8 @@ class DatabaseSeeder extends Seeder
                 'is_default' => true,
             ]
         );
+
+        // 4. Seed Product Catalog
+        $this->call(CatalogSeeder::class);
     }
 }

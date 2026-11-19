@@ -42,14 +42,14 @@
 
                 <!-- Action CTAs -->
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                    <a href="/shop" class="btn-primary text-sm px-7 py-3.5 shadow-lg">
+                    <a href="{{ route('shop') }}" class="btn-primary text-sm px-7 py-3.5 shadow-lg">
                         <span>{{ app()->getLocale() === 'ar' ? 'ابدأ التسوق الآن' : 'Explorer le catalogue' }}</span>
                         <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </a>
                     
-                    <a href="/shop?category=luxury-watches" class="btn-navy text-sm px-7 py-3.5 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700">
+                    <a href="{{ route('shop', ['category' => 'luxury-watches']) }}" class="btn-navy text-sm px-7 py-3.5 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700">
                         <span>{{ app()->getLocale() === 'ar' ? 'ساعات فاخرة' : 'Montres de Luxe' }}</span>
                     </a>
                 </div>
@@ -71,17 +71,15 @@
                 </div>
             </div>
 
-            <!-- Hero Showcase Card (Watch / Luxury Theme) -->
+            <!-- Hero Showcase Card -->
             <div class="lg:col-span-5 relative">
                 <div class="relative mx-auto max-w-sm rounded-3xl bg-gradient-to-b from-slate-800 to-souqly-navy-dark p-6 shadow-2xl border border-slate-700">
                     <div class="absolute -top-3 -end-3 bg-souqly-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                         BESTSELLER
                     </div>
 
-                    <!-- Product Mock visual -->
                     <div class="aspect-square bg-slate-900 rounded-2xl flex items-center justify-center p-8 relative overflow-hidden group">
                         <div class="w-48 h-48 rounded-full border-4 border-amber-500/30 flex items-center justify-center relative">
-                            <!-- Watch bezel representation -->
                             <div class="w-36 h-36 rounded-full bg-slate-950 border-2 border-slate-700 flex flex-col items-center justify-center shadow-inner">
                                 <span class="text-[10px] tracking-widest text-amber-400 font-bold uppercase">CHRONOGRAPH</span>
                                 <span class="text-xl font-bold text-white my-1">SOUQLY</span>
@@ -104,7 +102,7 @@
                                 <span class="text-2xl font-black text-souqly-orange">1,890 MAD</span>
                                 <span class="text-xs text-slate-400 line-through ms-2">2,490 MAD</span>
                             </div>
-                            <a href="/shop" class="btn-primary text-xs px-4 py-2">
+                            <a href="{{ route('product.show', 'souqly-royal-chrono-41mm') }}" class="btn-primary text-xs px-4 py-2">
                                 {{ app()->getLocale() === 'ar' ? 'طلب الآن' : 'Commander' }}
                             </a>
                         </div>
@@ -116,7 +114,7 @@
     </div>
 </section>
 
-<!-- Featured Categories -->
+<!-- Dynamic Categories Grid -->
 <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
@@ -126,61 +124,100 @@
                     {{ app()->getLocale() === 'ar' ? 'تصفح حسب الفئات' : 'Nos Catégories Phares' }}
                 </h2>
             </div>
-            <a href="/shop" class="text-xs font-bold text-souqly-navy hover:text-souqly-orange flex items-center gap-1 transition">
+            <a href="{{ route('shop') }}" class="text-xs font-bold text-souqly-navy hover:text-souqly-orange flex items-center gap-1 transition">
                 <span>{{ app()->getLocale() === 'ar' ? 'عرض جميع الفئات' : 'Voir tout le catalogue' }}</span>
                 <span class="rtl:rotate-180">&rarr;</span>
             </a>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- Cat 1 -->
-            <a href="/shop?category=luxury-watches" class="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-souqly-orange hover:shadow-xl transition-all text-center">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-orange-100 text-3xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    ⌚
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-souqly-orange transition">
-                    {{ app()->getLocale() === 'ar' ? 'ساعات فاخرة' : 'Montres de Luxe' }}
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">Classique, Sport, Automatique</p>
-            </a>
-
-            <!-- Cat 2 -->
-            <a href="/shop?category=electronics" class="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-souqly-orange hover:shadow-xl transition-all text-center">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-blue-100 text-3xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    📱
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-souqly-orange transition">
-                    {{ app()->getLocale() === 'ar' ? 'إلكترونيات وهواتف' : 'High-Tech & Gadgets' }}
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">Accessoires, Écouteurs, Smart</p>
-            </a>
-
-            <!-- Cat 3 -->
-            <a href="/shop?category=fashion" class="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-souqly-orange hover:shadow-xl transition-all text-center">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-purple-100 text-3xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    👔
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-souqly-orange transition">
-                    {{ app()->getLocale() === 'ar' ? 'أزياء وأناقة' : 'Mode & Style' }}
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">Vêtements, Maroquinerie, Chaussures</p>
-            </a>
-
-            <!-- Cat 4 -->
-            <a href="/shop?category=home" class="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-souqly-orange hover:shadow-xl transition-all text-center">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-100 text-3xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    🏡
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-souqly-orange transition">
-                    {{ app()->getLocale() === 'ar' ? 'منزل وديكور' : 'Maison & Déco' }}
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">Art de table, Électroménager</p>
-            </a>
+            @foreach($categories as $category)
+                <a href="{{ route('shop', ['category' => $category->slug]) }}" class="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-souqly-orange hover:shadow-xl transition-all text-center">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-orange-100/70 text-3xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        {{ $category->icon ?? '🛍️' }}
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm group-hover:text-souqly-orange transition">
+                        {{ $category->name }}
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-1">
+                        {{ $category->description }}
+                    </p>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>
 
-<!-- Moroccan Market Direct Order Callout -->
+<!-- Featured Products Showcase -->
+<section class="py-16 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
+            <div>
+                <span class="text-xs uppercase tracking-widest font-bold text-souqly-orange">SÉLECTION DU MOMENT</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
+                    {{ app()->getLocale() === 'ar' ? 'منتجات مميزة ومختارة' : 'Produits Vedettes' }}
+                </h2>
+            </div>
+            <a href="{{ route('shop') }}" class="btn-outline text-xs px-4 py-2">
+                <span>{{ app()->getLocale() === 'ar' ? 'تصفح كل المنتجات' : 'Voir toute la boutique' }}</span>
+                <span class="rtl:rotate-180">&rarr;</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach($featuredProducts as $product)
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-souqly-orange transition-all duration-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative bg-slate-100 aspect-square flex items-center justify-center p-6 overflow-hidden">
+                            @if($product->discount_percentage)
+                                <div class="absolute top-3 start-3 bg-rose-600 text-white text-[11px] font-black px-2 py-0.5 rounded-full shadow-sm z-10">
+                                    -{{ $product->discount_percentage }}%
+                                </div>
+                            @endif
+
+                            <div class="w-28 h-28 rounded-2xl bg-white shadow-inner flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+                                @if($product->category->slug === 'luxury-watches') ⌚ @elseif($product->category->slug === 'electronics') 📱 @elseif($product->category->slug === 'fashion') 👜 @else 🏺 @endif
+                            </div>
+                        </div>
+
+                        <div class="p-5 space-y-1.5">
+                            <span class="text-[10px] uppercase font-bold text-souqly-orange tracking-wider block">
+                                {{ $product->category->name }}
+                            </span>
+                            <h3 class="font-bold text-slate-900 text-sm leading-snug group-hover:text-souqly-orange transition line-clamp-2">
+                                <a href="{{ route('product.show', $product->slug) }}">
+                                    {{ $product->name }}
+                                </a>
+                            </h3>
+                            <p class="text-xs text-slate-500 line-clamp-2 pt-1">
+                                {{ $product->short_description }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <div class="text-base font-black text-souqly-navy">
+                                {{ number_format($product->price, 2) }} <span class="text-xs font-bold text-souqly-orange">MAD</span>
+                            </div>
+                            @if($product->compare_at_price)
+                                <div class="text-[11px] text-slate-400 line-through">
+                                    {{ number_format($product->compare_at_price, 2) }} MAD
+                                </div>
+                            @endif
+                        </div>
+
+                        <a href="{{ route('product.show', $product->slug) }}" class="btn-primary text-xs px-3 py-1.5 rounded-lg">
+                            {{ app()->getLocale() === 'ar' ? 'طلب' : 'Voir' }} &rarr;
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Moroccan Market Express WhatsApp CTA -->
 <section class="py-12 bg-slate-100">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="rounded-3xl bg-souqly-navy text-white p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">

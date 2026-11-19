@@ -3,6 +3,9 @@
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Store\CatalogController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -12,10 +15,25 @@ use Illuminate\Support\Facades\Session;
 |--------------------------------------------------------------------------
 */
 
-// Public Storefront
+// Public Storefront & Homepage
 Route::get('/', function () {
-    return view('welcome');
+    $featuredProducts = Product::active()
+        ->featured()
+        ->with(['translations', 'category.translations'])
+        ->take(4)
+        ->get();
+
+    $categories = Category::active()
+        ->with('translations')
+        ->orderBy('sort_order')
+        ->get();
+
+    return view('welcome', compact('featuredProducts', 'categories'));
 })->name('home');
+
+// Catalog & Product Details
+Route::get('/shop', [CatalogController::class, 'index'])->name('shop');
+Route::get('/product/{slug}', [CatalogController::class, 'show'])->name('product.show');
 
 // Language Switcher
 Route::get('/locale/{locale}', function (string $locale) {

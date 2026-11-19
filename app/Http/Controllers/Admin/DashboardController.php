@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -16,7 +17,7 @@ class DashboardController extends Controller
         $metrics = [
             'total_customers' => User::where('role', 'customer')->count(),
             'total_admins' => User::whereIn('role', ['admin', 'super_admin'])->count(),
-            'total_products' => 0, // Ready for Phase 3
+            'total_products' => Product::count(),
             'total_orders' => 0,   // Ready for Phase 5
             'total_revenue_mad' => 0.00,
         ];
