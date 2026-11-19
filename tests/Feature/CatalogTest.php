@@ -71,4 +71,13 @@ class CatalogTest extends TestCase
         $response->assertSee('ساعة سوقلي رويال كرونوغراف أوتوماتيك');
         $response->assertSee('dir="rtl"', false);
     }
+
+    public function test_xml_sitemap_returns_valid_xml(): void
+    {
+        $response = $this->get('/sitemap.xml');
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'text/xml; charset=UTF-8');
+        $response->assertSee('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', false);
+        $response->assertSee('/product/souqly-royal-chrono-41mm');
+    }
 }

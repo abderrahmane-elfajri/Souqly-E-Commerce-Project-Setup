@@ -43,6 +43,31 @@ Route::get('/product/{slug}', [CatalogController::class, 'show'])->name('product
 Route::get('/track', [TrackingController::class, 'show'])->name('track');
 Route::post('/track', [TrackingController::class, 'track'])->name('track.search');
 
+// XML Sitemap for Search Engines & Moroccan Local SEO
+Route::get('/sitemap.xml', function () {
+    $products = Product::active()->latest()->get(['slug', 'updated_at']);
+    $categories = Category::active()->get(['slug', 'updated_at']);
+    
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    
+    $xml .= '<url><loc>' . url('/') . '</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
+    $xml .= '<url><loc>' . url('/shop') . '</loc><changefreq>daily</changefreq><priority>0.9</priority></url>';
+    $xml .= '<url><loc>' . url('/track') . '</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>';
+    
+    foreach ($categories as $cat) {
+        $xml .= '<url><loc>' . url('/shop?category=' . $cat->slug) . '</loc><lastmod>' . $cat->updated_at->toAtomString() . '</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
+    }
+    
+    foreach ($products as $prod) {
+        $xml .= '<url><loc>' . url('/product/' . $prod->slug) . '</loc><lastmod>' . $prod->updated_at->toAtomString() . '</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
+    }
+    
+    $xml .= '</urlset>';
+    
+    return response($xml, 200)->header('Content-Type', 'text/xml');
+})->name('sitemap');
+
 // Shopping Cart Routes
 Route::prefix('cart')->name('cart.')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('index');
