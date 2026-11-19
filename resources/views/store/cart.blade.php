@@ -59,9 +59,16 @@
                         @foreach($cart->items as $item)
                             <div class="py-6 first:pt-0 last:pb-0 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                                 <div class="flex items-center gap-5">
-                                    <div class="w-20 h-20 bg-[#FAF8F5] border border-stone-200/70 flex items-center justify-center text-3xl shrink-0">
-                                        @if($item->product->category->slug === 'luxury-watches') ⌚ @elseif($item->product->category->slug === 'electronics') 📱 @elseif($item->product->category->slug === 'fashion') 👜 @else 🏺 @endif
-                                    </div>
+                                    <a href="{{ route('product.show', $item->product->slug) }}" class="w-20 h-20 bg-[#FAF8F5] border border-stone-200/70 shrink-0 overflow-hidden block group">
+                                        <img 
+                                            src="{{ $item->product->primary_image_url }}" 
+                                            alt="{{ $item->product->name }}" 
+                                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                                            width="80"
+                                            height="80"
+                                            loading="lazy"
+                                        >
+                                    </a>
                                     <div>
                                         <h3 class="font-serif text-base text-stone-900 font-normal hover:text-amber-800 transition">
                                             <a href="{{ route('product.show', $item->product->slug) }}">

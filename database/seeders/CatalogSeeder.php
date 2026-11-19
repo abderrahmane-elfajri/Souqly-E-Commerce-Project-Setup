@@ -113,6 +113,11 @@ class CatalogSeeder extends Seeder
                     ['sku' => 'SQL-WAT-001-SLV', 'attributes' => ['Couleur' => 'Acier Argenté', 'Cadran' => 'Noir Profond'], 'price' => 1890.00, 'stock' => 15],
                     ['sku' => 'SQL-WAT-001-GLD', 'attributes' => ['Couleur' => 'Or Rose', 'Cadran' => 'Bleu Nuit'], 'price' => 2050.00, 'stock' => 10],
                 ],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Souqly Royal Chrono Automatique 41mm', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Cadran et Mouvement Automatique', 'is_primary' => false, 'sort_order' => 2],
+                    ['image_path' => 'https://images.unsplash.com/photo-1547996160-71dfabb1d48c?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Boîtier Acier Inoxydable 316L', 'is_primary' => false, 'sort_order' => 3],
+                ],
             ],
 
             // Product 2: Classic Dress Watch
@@ -144,6 +149,10 @@ class CatalogSeeder extends Seeder
                 'variants' => [
                     ['sku' => 'SQL-WAT-002-BRN', 'attributes' => ['Bracelet' => 'Cuir Marron Foncé'], 'price' => 1250.00, 'stock' => 10],
                     ['sku' => 'SQL-WAT-002-BLK', 'attributes' => ['Bracelet' => 'Cuir Noir Ébène'], 'price' => 1250.00, 'stock' => 8],
+                ],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Souqly Héritage Classique Or & Cuir', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Détail Bracelet Cuir Véritable', 'is_primary' => false, 'sort_order' => 2],
                 ],
             ],
 
@@ -177,6 +186,10 @@ class CatalogSeeder extends Seeder
                     ['sku' => 'SQL-ELC-001-WHT', 'attributes' => ['Finition' => 'Blanc Arctique'], 'price' => 499.00, 'stock' => 25],
                     ['sku' => 'SQL-ELC-001-BLK', 'attributes' => ['Finition' => 'Noir Mat'], 'price' => 499.00, 'stock' => 15],
                 ],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Écouteurs Sans Fil Souqly Air Pro ANC', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Boîtier de Charge Sans Fil', 'is_primary' => false, 'sort_order' => 2],
+                ],
             ],
 
             // Product 4: Smartwatch Ultra
@@ -208,6 +221,10 @@ class CatalogSeeder extends Seeder
                 'variants' => [
                     ['sku' => 'SQL-ELC-002-ORG', 'attributes' => ['Bracelet' => 'Silicone Orange Sport'], 'price' => 850.00, 'stock' => 18],
                     ['sku' => 'SQL-ELC-002-BLK', 'attributes' => ['Bracelet' => 'Silicone Noir Nuit'], 'price' => 850.00, 'stock' => 12],
+                ],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Montre Connectée Souqly Ultra Titane', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Écran AMOLED Tactile HD', 'is_primary' => false, 'sort_order' => 2],
                 ],
             ],
 
@@ -241,6 +258,10 @@ class CatalogSeeder extends Seeder
                     ['sku' => 'SQL-FAS-001-COGNAC', 'attributes' => ['Couleur' => 'Cognac Vintage'], 'price' => 690.00, 'stock' => 8],
                     ['sku' => 'SQL-FAS-001-CHOCO', 'attributes' => ['Couleur' => 'Chocolat Noir'], 'price' => 690.00, 'stock' => 6],
                 ],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Sac Cabas Cuir Véritable Artisanal', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Détail Cuir Noble Pleine Fleur', 'is_primary' => false, 'sort_order' => 2],
+                ],
             ],
 
             // Product 6: Fes Ceramic Tagine Set
@@ -270,6 +291,10 @@ class CatalogSeeder extends Seeder
                     ],
                 ],
                 'variants' => [],
+                'images' => [
+                    ['image_path' => 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Service Tajine Céramique de Fès', 'is_primary' => true, 'sort_order' => 1],
+                    ['image_path' => 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=85', 'alt_text' => 'Motifs Fassis Contemporains Peints à la Main', 'is_primary' => false, 'sort_order' => 2],
+                ],
             ],
         ];
 
@@ -311,6 +336,18 @@ class CatalogSeeder extends Seeder
                         'price' => $varData['price'],
                         'stock' => $varData['stock'],
                         'is_active' => true,
+                    ]
+                );
+            }
+
+            // Seed Real High-Res Photography Images
+            foreach ($prodData['images'] ?? [] as $imgData) {
+                ProductImage::updateOrCreate(
+                    ['product_id' => $product->id, 'image_path' => $imgData['image_path']],
+                    [
+                        'alt_text' => $imgData['alt_text'],
+                        'is_primary' => $imgData['is_primary'],
+                        'sort_order' => $imgData['sort_order'],
                     ]
                 );
             }

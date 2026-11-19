@@ -173,14 +173,25 @@
                         @foreach($order->items as $item)
                             <tr>
                                 <td class="py-3 px-3">
-                                    <div class="font-bold text-slate-900">{{ $item->product_name }}</div>
-                                    @if($item->variant_attributes)
-                                        <div class="text-[11px] text-slate-500 mt-0.5">
-                                            @foreach($item->variant_attributes as $k => $v)
-                                                <span>{{ ucfirst($k) }}: {{ $v }} </span>
-                                            @endforeach
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+                                            <img 
+                                                src="{{ $item->product?->primary_image_url ?? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=80&q=80' }}" 
+                                                alt="{{ $item->product_name }}"
+                                                class="w-full h-full object-cover"
+                                            >
                                         </div>
-                                    @endif
+                                        <div>
+                                            <div class="font-bold text-slate-900">{{ $item->product_name }}</div>
+                                            @if($item->variant_attributes)
+                                                <div class="text-[11px] text-slate-500 mt-0.5">
+                                                    @foreach($item->variant_attributes as $k => $v)
+                                                        <span>{{ ucfirst($k) }}: {{ $v }} </span>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="py-3 px-3 font-mono text-slate-600">{{ $item->sku }}</td>
                                 <td class="py-3 px-3 text-right font-mono">{{ number_format($item->unit_price, 2) }} MAD</td>

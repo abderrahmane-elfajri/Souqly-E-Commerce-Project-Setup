@@ -79,7 +79,20 @@ class Product extends Model
     {
         return $this->primaryImage?->image_path 
             ?? $this->images->first()?->image_path 
-            ?? '/images/placeholder.svg';
+            ?? $this->defaultImageFallback();
+    }
+
+    public function defaultImageFallback(): string
+    {
+        return match($this->slug) {
+            'souqly-royal-chrono-41mm' => 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85',
+            'souqly-heritage-classic-gold' => 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=1200&q=85',
+            'souqly-air-pro-anc' => 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=85',
+            'souqly-smart-titanium-ultra' => 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=1200&q=85',
+            'sac-cuir-marocain-artisan' => 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85',
+            'service-tajine-design-contemporain' => 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1200&q=85',
+            default => 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85',
+        };
     }
 
     public function variants(): HasMany

@@ -150,8 +150,15 @@
                         @foreach($order->items as $item)
                             <div class="py-5 flex items-center justify-between gap-4">
                                 <div class="flex items-center gap-4">
-                                    <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200/70 flex items-center justify-center p-1 text-2xl flex-shrink-0">
-                                        🛍️
+                                    <div class="w-14 h-14 bg-[#FAF8F5] border border-stone-200/70 flex-shrink-0 overflow-hidden">
+                                        <img 
+                                            src="{{ $item->product?->primary_image_url ?? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=120&q=80' }}" 
+                                            alt="{{ $item->product_name }}" 
+                                            class="w-full h-full object-cover object-center"
+                                            width="56"
+                                            height="56"
+                                            loading="lazy"
+                                        >
                                     </div>
                                     <div>
                                         <h4 class="font-serif text-base text-stone-900 font-normal">{{ $item->product_name }}</h4>

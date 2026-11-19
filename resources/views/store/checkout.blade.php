@@ -193,8 +193,15 @@
                         @foreach($cart->items as $item)
                             <div class="pt-3 first:pt-0 flex items-center justify-between gap-3 text-xs tracking-wider">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-[#FAF8F5] border border-stone-200/70 flex items-center justify-center text-xl shrink-0">
-                                        @if($item->product->category->slug === 'luxury-watches') ⌚ @elseif($item->product->category->slug === 'electronics') 📱 @elseif($item->product->category->slug === 'fashion') 👜 @else 🏺 @endif
+                                    <div class="w-12 h-12 bg-[#FAF8F5] border border-stone-200/70 shrink-0 overflow-hidden">
+                                        <img 
+                                            src="{{ $item->product->primary_image_url }}" 
+                                            alt="{{ $item->product->name }}" 
+                                            class="w-full h-full object-cover object-center"
+                                            width="48"
+                                            height="48"
+                                            loading="lazy"
+                                        >
                                     </div>
                                     <div>
                                         <h4 class="font-serif text-sm text-stone-900 line-clamp-1 font-normal">{{ $item->product->name }}</h4>

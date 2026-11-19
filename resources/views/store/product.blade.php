@@ -21,27 +21,40 @@
         <div class="bg-white border border-stone-200/80 p-8 sm:p-12 mb-14 shadow-xs">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
-                <!-- Left: Product Gallery / Studio Visual -->
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="aspect-square bg-[#FAF8F5] border border-stone-200/80 flex items-center justify-center p-12 relative overflow-hidden group">
+                <!-- Left: Product Gallery / Real Studio Photography Visual -->
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="relative aspect-square bg-[#FAF8F5] border border-stone-200/80 overflow-hidden group">
                         @if($product->discount_percentage)
                             <div class="absolute top-4 start-4 border border-stone-300 bg-white/95 text-stone-800 text-[10px] font-semibold tracking-widest uppercase px-3 py-1 z-10">
                                 -{{ $product->discount_percentage }}%
                             </div>
                         @endif
 
-                        <div class="text-8xl transform group-hover:scale-105 transition-transform duration-700">
-                            @if($product->category->slug === 'luxury-watches')
-                                ⌚
-                            @elseif($product->category->slug === 'electronics')
-                                📱
-                            @elseif($product->category->slug === 'fashion')
-                                👜
-                            @else
-                                🏺
-                            @endif
-                        </div>
+                        <img 
+                            id="main-product-image"
+                            src="{{ $product->primary_image_url }}" 
+                            alt="{{ $product->name }}" 
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                            width="800"
+                            height="800"
+                            loading="eager"
+                        >
                     </div>
+
+                    <!-- Gallery Thumbnails (if multiple images exist) -->
+                    @if($product->images->count() > 1)
+                        <div class="flex items-center gap-3 overflow-x-auto pb-1">
+                            @foreach($product->images as $img)
+                                <button 
+                                    type="button" 
+                                    onclick="document.getElementById('main-product-image').src='{{ $img->image_path }}'"
+                                    class="w-20 h-20 shrink-0 border border-stone-200 hover:border-stone-900 transition-colors overflow-hidden focus:outline-none focus:border-[#C5A059]"
+                                >
+                                    <img src="{{ $img->image_path }}" alt="{{ $img->alt_text ?? $product->name }}" class="w-full h-full object-cover">
+                                </button>
+                            @endforeach
+                        </div>
+                    @endif
 
                     <!-- Quiet Luxury Guarantees under Gallery -->
                     <div class="grid grid-cols-3 gap-3 text-center text-[10.5px] uppercase tracking-wider text-stone-600 font-medium pt-2">
@@ -203,9 +216,16 @@
                     @foreach($relatedProducts as $related)
                         <div class="bg-white border border-stone-200/80 hover:border-stone-900 transition-all duration-300 p-5 flex flex-col justify-between group">
                             <div>
-                                <div class="aspect-square bg-[#FAF8F5] border border-stone-200/60 flex items-center justify-center text-4xl mb-4 group-hover:scale-105 transition-transform duration-300">
-                                    @if($related->category->slug === 'luxury-watches') ⌚ @elseif($related->category->slug === 'electronics') 📱 @elseif($related->category->slug === 'fashion') 👜 @else 🏺 @endif
-                                </div>
+                                <a href="{{ route('product.show', $related->slug) }}" class="block aspect-square bg-[#FAF8F5] border border-stone-200/60 overflow-hidden mb-4 group">
+                                    <img 
+                                        src="{{ $related->primary_image_url }}" 
+                                        alt="{{ $related->name }}" 
+                                        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                                        loading="lazy"
+                                        width="300"
+                                        height="300"
+                                    >
+                                </a>
                                 <h3 class="font-serif text-sm text-stone-900 line-clamp-2 mb-1 font-normal group-hover:text-amber-800 transition-colors">
                                     <a href="{{ route('product.show', $related->slug) }}">
                                         {{ $related->name }}

@@ -72,10 +72,24 @@
             <div class="divide-y divide-stone-100">
                 @foreach($order->items as $item)
                     <div class="py-4 flex items-center justify-between text-xs tracking-wider">
-                        <div>
-                            <h4 class="font-serif text-sm sm:text-base text-stone-900">{{ $item->product_name }}</h4>
-                            <div class="text-[11px] text-stone-400 font-mono mt-0.5">
-                                SKU: {{ $item->sku }} • {{ __('checkout.quantity') }}: {{ $item->quantity }} × {{ number_format($item->unit_price, 2) }} {{ $order->currency }}
+                        <div class="flex items-center gap-4">
+                            @if($item->product)
+                                <div class="w-12 h-12 bg-[#FAF8F5] border border-stone-200/70 shrink-0 overflow-hidden">
+                                    <img 
+                                        src="{{ $item->product->primary_image_url }}" 
+                                        alt="{{ $item->product_name }}" 
+                                        class="w-full h-full object-cover object-center"
+                                        width="48"
+                                        height="48"
+                                        loading="lazy"
+                                    >
+                                </div>
+                            @endif
+                            <div>
+                                <h4 class="font-serif text-sm sm:text-base text-stone-900">{{ $item->product_name }}</h4>
+                                <div class="text-[11px] text-stone-400 font-mono mt-0.5">
+                                    SKU: {{ $item->sku }} • {{ __('checkout.quantity') }}: {{ $item->quantity }} × {{ number_format($item->unit_price, 2) }} {{ $order->currency }}
+                                </div>
                             </div>
                         </div>
                         <div class="font-medium text-stone-900 text-sm">

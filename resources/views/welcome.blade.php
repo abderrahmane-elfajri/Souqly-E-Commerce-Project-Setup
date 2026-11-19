@@ -69,54 +69,71 @@
                 </div>
             </div>
 
-            <!-- Hero Horology Showcase Card (The Row & UIbyZak inspired) -->
+            <!-- Hero Horology Showcase Card (Real Photography Interface) -->
             <div class="lg:col-span-5 relative">
-                <div class="relative mx-auto max-w-sm bg-[#0E1726] border border-stone-700/70 p-7 shadow-2xl transition duration-500 hover:border-stone-500">
-                    <div class="flex items-center justify-between pb-4 border-b border-stone-800 text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">
-                        <span class="text-[#C5A059]">PIÈCE D'EXCEPTION</span>
-                        <span>CALIBRE AUTO</span>
+                <div class="relative mx-auto max-w-md bg-[#0E1726]/90 backdrop-blur-md border border-stone-700/80 p-6 sm:p-7 shadow-2xl transition duration-500 hover:border-[#C5A059]/60 group">
+                    
+                    <!-- Header Info Bar -->
+                    <div class="flex items-center justify-between pb-3.5 border-b border-stone-800 text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">
+                        <span class="text-[#C5A059] flex items-center gap-1.5 font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-ping"></span>
+                            <span>PIÈCE PHARE 2026</span>
+                        </span>
+                        <span class="text-stone-400 tracking-wider">CALIBRE JAPONAIS AUTO</span>
                     </div>
 
-                    <!-- Watch Graphic Representation with Horology Aesthetics -->
-                    <div class="aspect-square bg-[#070D17] my-6 flex items-center justify-center p-8 relative overflow-hidden group border border-stone-800/80">
-                        <div class="w-52 h-52 rounded-full border border-stone-700/60 flex items-center justify-center relative p-3">
-                            <div class="w-44 h-44 rounded-full border-2 border-[#C5A059]/40 flex items-center justify-center relative">
-                                <!-- Dial ticks -->
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="w-full h-px bg-stone-700/40"></div>
-                                </div>
-                                <div class="absolute inset-0 flex items-center justify-center rotate-90">
-                                    <div class="w-full h-px bg-stone-700/40"></div>
-                                </div>
-                                
-                                <div class="w-36 h-36 rounded-full bg-[#0B1320] border border-stone-700 flex flex-col items-center justify-center shadow-2xl relative z-10 text-center px-2">
-                                    <span class="text-[9px] tracking-[0.25em] text-[#C5A059] font-medium uppercase">SOUQLY</span>
-                                    <span class="text-xs font-serif text-white tracking-widest my-1 uppercase">CHRONOGRAPHE</span>
-                                    <span class="text-[8px] text-stone-400 tracking-[0.2em]">41MM • 50M</span>
-                                </div>
+                    <!-- Real Photography Image Showcase -->
+                    <div class="relative aspect-[4/3] sm:aspect-square bg-[#070D17] my-5 overflow-hidden border border-stone-800 group">
+                        <img 
+                            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85" 
+                            alt="Souqly Royal Chronographe Automatique 41mm" 
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                            width="600"
+                            height="600"
+                            loading="eager"
+                        >
+                        
+                        <!-- Floating Glassmorphism Badge: Casablanca 24h Dispatch -->
+                        <div class="absolute bottom-3 start-3 end-3 flex items-center justify-between gap-2 p-2.5 bg-[#0B1320]/85 backdrop-blur-md border border-stone-700/70 text-[10px]">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-stone-200 font-medium tracking-wider">En Stock à Casablanca</span>
                             </div>
+                            <span class="text-[#C5A059] font-mono font-semibold tracking-wider">24h Express</span>
+                        </div>
+
+                        <div class="absolute top-3 end-3 px-2.5 py-1 bg-[#C5A059] text-[#0B1320] text-[9.5px] font-bold tracking-widest uppercase shadow-md">
+                            -24% PRIVILÈGE
                         </div>
                     </div>
 
-                    <div class="space-y-3">
+                    <!-- Metadata & Pricing -->
+                    <div class="space-y-3.5">
                         <div class="flex items-center justify-between text-xs">
-                            <span class="text-[10px] text-stone-400 uppercase tracking-[0.2em]">Haute Horlogerie</span>
+                            <span class="text-[10px] text-stone-400 uppercase tracking-[0.22em] font-medium">Haute Horlogerie • 41mm</span>
                             <div class="flex items-center text-[#C5A059] text-[11px] gap-1">
                                 <span>★★★★★</span>
-                                <span class="text-stone-400 text-[10px] font-mono">(48)</span>
+                                <span class="text-stone-400 text-[10px] font-mono">(48 avis vérifiés)</span>
                             </div>
                         </div>
-                        <h3 class="font-serif text-lg text-white font-normal leading-snug">Souqly Royal Chrono Automatique 41mm</h3>
+
+                        <h3 class="font-serif text-lg sm:text-xl text-white font-normal leading-snug">
+                            <a href="{{ route('product.show', 'souqly-royal-chrono-41mm') }}" class="hover:text-stone-200 transition-colors">
+                                Souqly Royal Chrono Automatique 41mm
+                            </a>
+                        </h3>
+
                         <div class="flex items-center justify-between pt-3 border-t border-stone-800">
                             <div>
-                                <span class="text-xl font-medium text-white tracking-wide">1,890.00 <span class="text-xs text-[#C5A059]">MAD</span></span>
+                                <span class="text-2xl font-serif text-white font-normal tracking-wide">1,890.00 <span class="text-xs font-sans text-[#C5A059] font-medium">MAD</span></span>
                                 <span class="text-xs text-stone-500 line-through ms-2">2,490.00</span>
                             </div>
-                            <a href="{{ route('product.show', 'souqly-royal-chrono-41mm') }}" class="btn-primary bg-[#C5A059] hover:bg-[#B38F46] text-[#0B1320] text-[10px] tracking-[0.18em] py-2.5 px-4 font-bold uppercase border-none">
-                                {{ app()->getLocale() === 'ar' ? 'طلب الآن' : 'Découvrir' }}
+                            <a href="{{ route('product.show', 'souqly-royal-chrono-41mm') }}" class="btn-primary bg-[#C5A059] hover:bg-[#B38F46] text-[#0B1320] text-[10px] tracking-[0.2em] py-3 px-5 font-bold uppercase border-none transition-all shadow-md">
+                                {{ app()->getLocale() === 'ar' ? 'طلب الآن' : 'Commander' }} &rarr;
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -142,20 +159,35 @@
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             @foreach($categories as $category)
-                <a href="{{ route('shop', ['category' => $category->slug]) }}" class="group relative p-7 bg-white border border-stone-200/80 hover:border-stone-900 transition-all duration-300 text-center flex flex-col justify-between">
-                    <div class="w-16 h-16 mx-auto bg-[#FAF8F5] border border-stone-200/60 text-2xl flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
-                        {{ $category->icon ?? '🛍️' }}
+                <a href="{{ route('shop', ['category' => $category->slug]) }}" class="group relative bg-white border border-stone-200/80 hover:border-stone-900 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xs">
+                    <div class="relative aspect-[4/3] bg-stone-900 overflow-hidden">
+                        <img 
+                            src="{{ $category->image_url }}" 
+                            alt="{{ $category->name }}" 
+                            class="w-full h-full object-cover object-center opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                            loading="lazy"
+                            width="400"
+                            height="300"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B1320]/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 start-3 text-white text-xs font-serif tracking-wider">
+                            <span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-widest font-sans bg-stone-900/80 border border-stone-700 text-[#C5A059]">
+                                {{ $category->icon ?? '✦' }} COLLECTION
+                            </span>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-serif text-base sm:text-lg text-stone-900 font-normal group-hover:text-amber-800 transition-colors">
-                            {{ $category->name }}
-                        </h3>
-                        <p class="text-xs text-stone-500 mt-1 line-clamp-1 font-light">
-                            {{ $category->description }}
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 text-[10px] uppercase tracking-[0.18em] text-stone-400 group-hover:text-stone-900 transition-colors">
-                        {{ app()->getLocale() === 'ar' ? 'استكشف المجموعة' : 'Voir les pièces' }} &rarr;
+                    <div class="p-6 text-center flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-base sm:text-lg text-stone-900 font-normal group-hover:text-stone-700 transition-colors">
+                                {{ $category->name }}
+                            </h3>
+                            <p class="text-xs text-stone-500 mt-1 line-clamp-1 font-light">
+                                {{ $category->description }}
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-100 text-[10px] uppercase tracking-[0.18em] text-stone-400 group-hover:text-stone-900 transition-colors font-medium">
+                            {{ app()->getLocale() === 'ar' ? 'استكشف المجموعة' : 'Voir les pièces' }} &rarr;
+                        </div>
                     </div>
                 </a>
             @endforeach
@@ -183,16 +215,23 @@
             @foreach($featuredProducts as $product)
                 <div class="bg-white border border-stone-200/80 hover:border-stone-900 transition-all duration-500 flex flex-col justify-between group">
                     <div>
-                        <div class="relative bg-[#FAF8F5] aspect-[4/5] flex items-center justify-center p-8 overflow-hidden">
+                        <div class="relative bg-[#FAF8F5] aspect-[4/5] overflow-hidden group">
                             @if($product->discount_percentage)
                                 <div class="absolute top-3 start-3 border border-stone-300 bg-white/95 text-stone-800 text-[10px] font-semibold tracking-widest uppercase px-2 py-0.5 z-10">
                                     -{{ $product->discount_percentage }}%
                                 </div>
                             @endif
 
-                            <div class="w-28 h-28 bg-white border border-stone-200/60 shadow-sm flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-500">
-                                @if($product->category->slug === 'luxury-watches') ⌚ @elseif($product->category->slug === 'electronics') 📱 @elseif($product->category->slug === 'fashion') 👜 @else 🏺 @endif
-                            </div>
+                            <a href="{{ route('product.show', $product->slug) }}" class="block w-full h-full">
+                                <img 
+                                    src="{{ $product->primary_image_url }}" 
+                                    alt="{{ $product->name }}" 
+                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    loading="lazy"
+                                    width="600"
+                                    height="750"
+                                >
+                            </a>
                         </div>
 
                         <div class="p-6 space-y-2">

@@ -66,8 +66,20 @@
                     @forelse($products as $product)
                         <tr class="hover:bg-slate-50/80 transition-colors">
                             <td class="py-3.5 px-4">
-                                <div class="font-bold text-slate-900 text-sm">{{ $product->name }}</div>
-                                <span class="text-[11px] text-slate-400 font-mono">/product/{{ $product->slug }}</span>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+                                        <img 
+                                            src="{{ $product->primary_image_url }}" 
+                                            alt="{{ $product->name }}" 
+                                            class="w-full h-full object-cover"
+                                            loading="lazy"
+                                        >
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-900 text-sm">{{ $product->name }}</div>
+                                        <span class="text-[11px] text-slate-400 font-mono">/product/{{ $product->slug }}</span>
+                                    </div>
+                                </div>
                             </td>
                             <td class="py-3.5 px-4 font-mono font-bold text-slate-700">
                                 {{ $product->sku }}

@@ -193,8 +193,8 @@
                         @foreach($products as $product)
                             <div class="bg-white border border-stone-200/80 hover:border-stone-900 transition-all duration-500 flex flex-col justify-between group">
                                 <div>
-                                    <!-- Visual Header / Image area -->
-                                    <div class="relative bg-[#FAF8F5] aspect-[4/5] flex items-center justify-center p-8 overflow-hidden">
+                                    <!-- Visual Header / Real Product Photography -->
+                                    <div class="relative bg-[#FAF8F5] aspect-[4/5] overflow-hidden group">
                                         @if($product->discount_percentage)
                                             <div class="absolute top-3 start-3 border border-stone-300 bg-white/95 text-stone-800 text-[9.5px] font-semibold tracking-widest uppercase px-2 py-0.5 z-10">
                                                 -{{ $product->discount_percentage }}%
@@ -207,18 +207,16 @@
                                             </div>
                                         @endif
 
-                                        <!-- Product Graphic Representation -->
-                                        <div class="w-32 h-32 bg-white border border-stone-200/60 shadow-sm flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-500">
-                                            @if($product->category->slug === 'luxury-watches')
-                                                ⌚
-                                            @elseif($product->category->slug === 'electronics')
-                                                📱
-                                            @elseif($product->category->slug === 'fashion')
-                                                👜
-                                            @else
-                                                🏺
-                                            @endif
-                                        </div>
+                                        <a href="{{ route('product.show', $product->slug) }}" class="block w-full h-full">
+                                            <img 
+                                                src="{{ $product->primary_image_url }}" 
+                                                alt="{{ $product->name }}" 
+                                                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                                                loading="lazy"
+                                                width="600"
+                                                height="750"
+                                            >
+                                        </a>
                                     </div>
 
                                     <!-- Content -->
