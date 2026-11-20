@@ -54,6 +54,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Critical Inline Styles to prevent FOUC -->
+    <style>
+        svg { display: inline-block; vertical-align: middle; max-width: 100%; height: auto; }
+        svg.w-3\.5 { width: 0.875rem !important; height: 0.875rem !important; }
+        svg.w-4 { width: 1rem !important; height: 1rem !important; }
+        svg.w-5 { width: 1.25rem !important; height: 1.25rem !important; }
+        svg.w-6 { width: 1.5rem !important; height: 1.5rem !important; }
+        svg.w-8 { width: 2rem !important; height: 2rem !important; }
+    </style>
+
     <!-- Styles & Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
