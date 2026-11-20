@@ -1,10 +1,31 @@
 <?php
 
+// Trust HTTPS headers from Vercel
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+
+// Force ASSET_URL to root-relative so assets never point to localhost
+putenv('ASSET_URL=/');
+$_ENV['ASSET_URL'] = '/';
+$_SERVER['ASSET_URL'] = '/';
+
+// Dynamic APP_URL from host header
+if (isset($_SERVER['HTTP_HOST'])) {
+    $proto = (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http';
+    $currentAppUrl = $proto . '://' . $_SERVER['HTTP_HOST'];
+    putenv("APP_URL={$currentAppUrl}");
+    $_ENV['APP_URL'] = $currentAppUrl;
+    $_SERVER['APP_URL'] = $currentAppUrl;
+}
+
 // Check if request is for a static asset in /public (safety fallback)
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
-$publicFile = __DIR__ . '/../public' . $uri;
+$cleanUri = preg_replace('#^/public/#', '/', $uri);
+$publicFile = __DIR__ . '/../public' . $cleanUri;
 
-if ($uri !== '/' && file_exists($publicFile) && is_file($publicFile)) {
+if ($cleanUri !== '/' && file_exists($publicFile) && is_file($publicFile)) {
     $ext = strtolower(pathinfo($publicFile, PATHINFO_EXTENSION));
     $mimes = [
         'css'   => 'text/css; charset=utf-8',
@@ -53,7 +74,7 @@ foreach ($dirs as $dir) {
 $srcSqlite = __DIR__ . '/../database/database.sqlite';
 $destSqlite = '/tmp/database.sqlite';
 
-if (!file_exists($destSqlite) && file_exists($srcSqlite)) {
+if (file_exists($srcSqlite) && (!file_exists($destSqlite) || filesize($destSqlite) !== filesize($srcSqlite))) {
     copy($srcSqlite, $destSqlite);
 }
 
